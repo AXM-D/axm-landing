@@ -11,7 +11,7 @@ export default function Contact() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">Get in Touch</h2>
           <p className="mt-4 text-lg text-slate-400 max-w-lg mx-auto leading-relaxed">
-            Interested in a custom edition, enterprise deployment, or partnership? Reach out directly.
+            Custom edition, enterprise deployment, or partnership — email us directly.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

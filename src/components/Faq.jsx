@@ -11,8 +11,8 @@ const faqs = [
     a: 'MISP and TheHive are complete OSINT platforms. DySH is an embeddable engine — it provides the automation, scoring, and query layer that you integrate into your existing platform rather than replacing it.',
   },
   {
-    q: 'Do I need a LLM to use DySH?',
-    a: 'No. The LLM is optional and only used for natural language query parsing and insight generation. All core features — playbooks, scoring, connectors, API — work without any LLM configured. When enabled, it supports Ollama (local) or OpenAI.',
+    q: 'Do I need an LLM to use DySH?',
+    a: 'No. The LLM is optional — only used for natural language parsing and insights. Playbooks, scoring, connectors, and the API all work without one. When enabled, it supports Ollama (local) or OpenAI.',
   },
   {
     q: 'Can I write my own connectors?',
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'Is DySH General really free?',
-    a: 'Yes. DySH General is released under the MIT license — free to use, modify, and distribute. It includes the full engine with reasonable limits (up to 8 playbook steps, 3 concurrent investigations) suitable for individual researchers and small teams.',
+    a: 'Yes. MIT license — free to use, modify, and distribute. Full engine with limits (8 playbook steps, 3 concurrent investigations) for individual researchers and small teams.',
   },
   {
     q: 'How do I upgrade from General to Premium?',
@@ -70,7 +70,7 @@ export default function Faq() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Frequently Asked Questions</h2>
           <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            Common questions about DySH editions, licensing, and technical capabilities.
+            Editions, licensing, and technical details.
           </p>
         </div>
         <div className="mt-10">

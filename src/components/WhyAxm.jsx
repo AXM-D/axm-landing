@@ -3,27 +3,27 @@ import useScrollReveal from '../hooks/useScrollReveal'
 const points = [
   {
     title: 'Engine, not a platform',
-    desc: 'Unlike MISP, TheHive, or SENTINEL — which are complete platforms — DySH is an embeddable engine. It connects to your existing OSINT stack via API and plugins, rather than replacing it.',
+    desc: 'MISP, TheHive, SENTINEL are platforms. DySH is an embeddable engine — connects to your existing stack via API and plugins instead of replacing it.',
   },
   {
-    title: 'Multi-factor scoring out of the box',
-    desc: 'Most OSINT tools leave scoring to the analyst\'s judgment. DySH computes threat, confidence, and priority scores automatically from freshness, source reliability, correlation, and reputation factors.',
+    title: 'Scoring without manual work',
+    desc: 'Most OSINT tools leave scoring to the analyst. DySH computes threat, confidence, and priority scores from freshness, source reliability, correlation, and reputation automatically.',
   },
   {
     title: 'Natural language to query',
-    desc: 'Instead of writing SQL or Cypher manually, analysts can ask questions in plain language. The engine parses intent, extracts entities, and generates the appropriate query automatically.',
+    desc: 'Stop writing SQL or Cypher by hand. Ask a question in plain language — the engine parses intent, extracts entities, and generates the query.',
   },
   {
     title: 'Playbook-driven automation',
-    desc: 'Custom scripts are brittle and one-off. DySH playbooks are declarative YAML files with branching, retry, and variable interpolation — reusable across investigations without writing code.',
+    desc: 'Custom scripts break over time. DySH playbooks are declarative YAML files with branching, retry, and variable interpolation — reusable without writing code.',
   },
   {
     title: 'Open core, commercial options',
-    desc: 'DySH General is fully open source under MIT. Teams that need scale, custom workflows, or enterprise features can move to Custom or Premium without rebuilding their automation.',
+    desc: 'DySH General is MIT open source. Teams that need more scale or custom workflows can move to Custom or Premium without changing their playbooks.',
   },
   {
-    title: 'Plugin connector architecture',
-    desc: 'Instead of hardcoding integrations, DySH uses a registry pattern. Anyone can write a connector implementing BaseConnector and plug it in without modifying the engine.',
+    title: 'Plugin connector system',
+    desc: 'No hardcoded integrations. Implement BaseConnector, register it, and call it from any playbook. The engine does not need modifications.',
   },
 ]
 
@@ -38,7 +38,7 @@ export default function WhyAxn() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Why AXM?</h2>
           <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            DySH is not another OSINT platform. It is an intelligence engine that integrates into existing workflows.
+            Not another platform. An engine that integrates into what you already use.
           </p>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 gap-x-12 gap-y-10">

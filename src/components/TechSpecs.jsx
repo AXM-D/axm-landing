@@ -51,7 +51,7 @@ export default function TechSpecs() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Technical Specifications</h2>
           <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            Built with a modern Python async stack. Designed for performance, extensibility, and minimal dependencies.
+            Python async stack. FastAPI, SQLAlchemy, and minimal dependencies.
           </p>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

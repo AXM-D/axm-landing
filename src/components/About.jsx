@@ -21,11 +21,11 @@ export default function About() {
               About AXM
             </h2>
             <p className="mt-6 text-base text-slate-500 leading-relaxed">
-              AXM develops modular intelligence engines for OSINT platforms. Our technology automates research workflows, computes multi-factor threat scores, and translates natural language into structured database queries.
+              AXM builds embeddable engines for OSINT platforms — playbook automation, multi-factor scoring, and natural language to SQL/Cypher translation.
             </p>
             <p className="mt-4 text-base text-slate-500 leading-relaxed">
-                  Our engines power investigations for security researchers, SOC teams, and enterprises, providing a consistent API layer that works with any data source.
-                </p>
+              Researchers, SOC teams, and enterprises use these engines to automate investigations and query data without writing code.
+            </p>
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm">
               <div>
                 <span className="text-slate-400 text-xs font-medium uppercase tracking-wide">GitHub</span>

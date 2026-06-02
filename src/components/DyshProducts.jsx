@@ -6,7 +6,7 @@ const editions = [
     tagline: 'Open source',
     price: 'Free',
     license: 'MIT',
-    desc: 'Fully functional engine for individual researchers and small teams. Community-supported with all core features.',
+    desc: 'Full engine for individuals and small teams. Community support. MIT license.',
     features: ['Up to 8 playbook steps', 'Up to 3 concurrent investigations', 'Multi-factor scoring', 'REST API (15 endpoints)', 'SQLite / PostgreSQL', 'Community support'],
     href: 'https://github.com/AXM-D',
     cta: 'View on GitHub',
@@ -16,7 +16,7 @@ const editions = [
     tagline: 'Tailored for your team',
     price: 'Custom',
     license: 'Private',
-    desc: 'Adapted to your organization\'s specific workflows, data sources, and branding requirements.',
+    desc: 'Engine adapted to your workflows, data sources, and branding. Private license.',
     features: ['Unlimited playbook steps', 'Unlimited concurrent investigations', 'Full scoring engine', 'All API endpoints', 'Custom integrations', 'Dedicated support'],
     href: '#contact',
     cta: 'Contact us',
@@ -27,7 +27,7 @@ const editions = [
     tagline: 'Enterprise platform',
     price: 'Subscription',
     license: 'Annual',
-    desc: 'Complete engine plus web dashboard, real-time events, machine learning, and multi-user management with SLA.',
+    desc: 'Full engine + dashboard, WebSocket events, ML scoring, multi-user, and SLA.',
     features: ['Everything in Custom', 'Web dashboard (React)', 'WebSocket real-time events', 'ML-powered scoring', 'Multi-user & RBAC', 'SLA 24/7 support'],
     href: '#contact',
     cta: 'Contact us',
@@ -45,7 +45,7 @@ export default function DyshProducts() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">DySH — Three Editions</h2>
           <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            Built on the same core engine. Choose the edition that fits your scale.
+            Same core engine. Different scale.
           </p>
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6 items-start">

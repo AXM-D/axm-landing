@@ -42,7 +42,7 @@ export default function ComparisonTable() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Compare Editions</h2>
           <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            Every edition shares the same core engine. Differences are in scale, support, and enterprise features.
+            Same core engine. Differences are scale, support, and enterprise features.
           </p>
         </div>
         <div className="overflow-x-auto -mx-6 px-6">

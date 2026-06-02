@@ -2,29 +2,29 @@ import useScrollReveal from '../hooks/useScrollReveal'
 
 const steps = [
   {
-    title: '1. Define a playbook',
-    desc: 'Write a YAML file describing the investigation flow: which connectors to call, how to transform data, what conditions to evaluate, and where to send results.',
-    detail: 'Playbooks support up to 6 step types: connector_call, transform, condition, notify, scoring.compute, and sentinel_call (in Sentinel edition).',
+    title: '1. Write a playbook',
+    desc: 'YAML file describing the investigation: connectors to call, data transforms, conditions, and notifications.',
+    detail: 'Step types: connector_call, transform, condition, notify, scoring.compute.',
   },
   {
     title: '2. Submit a seed',
-    desc: 'Send an entity — email, IP, domain, username — to the REST API. The engine creates an investigation and optionally associates it with a playbook.',
-    detail: 'Each investigation tracks its status (pending/running/completed/failed), stores results, and logs errors for debugging.',
+    desc: 'POST an entity — email, IP, domain, username — to the API. The engine creates an investigation and attaches the playbook.',
+    detail: 'Each investigation has a status (pending/running/completed/failed) and stores results and errors.',
   },
   {
-    title: '3. Engine executes',
-    desc: 'The playbook executor runs each step sequentially, interpolating variables from previous results. Conditional branching decides which paths to follow.',
-    detail: 'Steps have automatic retry (configurable), and the executor handles errors gracefully without crashing the entire investigation.',
+    title: '3. Engine runs it',
+    desc: 'The executor iterates steps in order, interpolating variables from previous results. Conditional branching decides which path to take.',
+    detail: 'Steps retry automatically (configurable). One failed step does not crash the whole investigation.',
   },
   {
-    title: '4. Scoring & storage',
-    desc: 'After execution, the scoring engine computes threat, confidence, or priority scores. Results are stored in SQLite or PostgreSQL via SQLAlchemy.',
-    detail: 'The repository pattern separates storage logic from business logic, making it straightforward to swap databases or add caching.',
+    title: '4. Scoring + storage',
+    desc: 'After execution, the scoring engine computes threat, confidence, or priority scores. Everything goes into SQLite or PostgreSQL.',
+    detail: 'Repository pattern keeps storage separate from logic. Swap databases by changing one config line.',
   },
   {
-    title: '5. Query & retrieve',
-    desc: 'Analysts can query past investigations using either the REST API or natural language. The query engine parses intent and generates SQL or Cypher automatically.',
-    detail: 'Translation templates exist for multiple entity types and intents: find entities, find relations, score lookup, investigation status, and more.',
+    title: '5. Query results',
+    desc: 'Past investigations are queryable via REST or plain language. The engine parses the intent and builds SQL or Cypher.',
+    detail: 'Templates exist for find entities, find relations, score lookup, investigation status, and more.',
   },
 ]
 
@@ -39,7 +39,7 @@ export default function HowItWorks() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">How It Works</h2>
           <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            DySH takes a seed entity through a playbook pipeline, executes automated steps, scores the results, and stores everything for later querying.
+            Submit an entity → playbook executes steps → engine scores results → stored and queryable.
           </p>
         </div>
         <div className="mt-14 space-y-10">

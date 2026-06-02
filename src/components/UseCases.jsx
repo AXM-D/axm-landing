@@ -3,22 +3,22 @@ import useScrollReveal from '../hooks/useScrollReveal'
 const cases = [
   {
     title: 'Threat intelligence analyst',
-    desc: 'An analyst receives a suspicious email. They submit it to DySH, which runs a playbook: checks breach databases, extracts the username, enumerates social media profiles, analyzes the domain, and computes a threat score — all in seconds.',
+    desc: 'Receives a suspicious email. Submits it to DySH — playbook checks breach databases, extracts username, enumerates social profiles, analyzes the domain, and returns a threat score. Seconds, not hours.',
     tags: ['email', 'breach', 'domain', 'scoring'],
   },
   {
     title: 'SOC team',
-    desc: 'A SOC handles hundreds of alerts daily. DySH automates the initial triage: each alert feeds into a scoring playbook that correlates freshness, source reputation, and historical data to produce a priority score before a human ever looks at it.',
+    desc: 'Hundreds of alerts per day. Each feeds into a scoring playbook that correlates freshness, source reputation, and historical data. Priority score is ready before a human looks at the alert.',
     tags: ['triage', 'automation', 'correlation'],
   },
   {
     title: 'OSINT researcher',
-    desc: 'A researcher investigating a threat actor collects data from multiple sources. Using DySH\'s natural language query engine, they ask questions like "find all domains registered by this email" and get results without writing SQL.',
+    desc: 'Investigating a threat actor. Queries past data in plain language — "find all domains registered by this email" — without writing SQL. The engine translates and returns results.',
     tags: ['research', 'query', 'nlp'],
   },
   {
     title: 'Platform integrator',
-    desc: 'A team building an OSINT platform embeds DySH as its intelligence engine. They implement a custom connector for their data source, register it with the connector registry, and call it from playbooks alongside built-in steps.',
+    desc: 'Building an OSINT platform. Embeds DySH as the intelligence engine. Writes a custom connector, registers it, and calls it from playbooks alongside built-in steps.',
     tags: ['integration', 'plugin', 'api'],
   },
 ]
@@ -34,7 +34,7 @@ export default function UseCases() {
         }`} ref={ref}>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Use Cases</h2>
           <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            DySH adapts to different workflows — from individual researchers to enterprise SOC teams.
+            From individual researchers to SOC teams — same engine, different scale.
           </p>
         </div>
         <div className="mt-14 grid md:grid-cols-2 gap-6">

@@ -1,101 +1,240 @@
-import useScrollReveal from '../hooks/useScrollReveal'
+import { useLayoutEffect, useRef, useState } from 'react'
+import Reveal from './Reveal'
+import { LINKS, STACK, STAGES, STATUS } from '../data'
 
-const features = [
-  {
-    title: 'Playbook Orchestrator',
-    desc: 'Investigation flows in YAML — connector calls, transforms, conditional branching, notifications. Retry logic and variable interpolation built in.',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354.31.035.54.369.393.664-.076.15-.133.31-.133.477 0 .536.526.976 1.25.976.724 0 1.25-.44 1.25-.976 0-.167-.057-.327-.133-.477-.147-.295.083-.629.393-.664a48.395 48.395 0 004.616-.354 48.04 48.04 0 01-.642-5.056c-.023-.31.222-.57.532-.57v0c.355 0 .676.186.959.401.29.221.634.349 1.003.349 1.036 0 1.875-1.007 1.875-2.25s-.84-2.25-1.875-2.25c-.369 0-.713.128-1.003.349-.283.215-.604.401-.959.401v0a.656.656 0 01-.658-.663 48.422 48.422 0 01.315-4.907c-1.387.225-2.792.316-4.163.3a.64.64 0 01-.657-.643z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Scoring Engine',
-    desc: 'Weighted scoring from freshness, source reliability, correlation, and reputation. Three score types — threat, confidence, priority — each with its own configurable weights.',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Natural Language Query',
-    desc: 'Type a question in plain language, get SQL or Cypher back. Uses Ollama (local) or OpenAI. No manual query writing for common investigations.',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Connector System',
-    desc: 'Plugin architecture. Implement a BaseConnector, register it, and call it from any playbook with connector_call. No engine changes needed to add a new source.',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-2.571a4.5 4.5 0 01-1.242-7.244l-4.5-4.5a4.5 4.5 0 00-6.364 6.364L3.757 8.065" />
-      </svg>
-    ),
-  },
-  {
-    title: 'REST API',
-    desc: '15+ endpoints for investigations, playbooks, scoring, and queries. Swagger at /docs. No SDK required — just HTTP.',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Flexible Storage',
-    desc: 'SQLAlchemy async — SQLite for dev, PostgreSQL for production. Repository pattern keeps persistence separate from business logic.',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-      </svg>
-    ),
-  },
-]
+/**
+ * Pestañas con indicador por clip-path: se dibuja una segunda copia de la lista
+ * con el estilo activo y se recorta a la posición de la pestaña seleccionada.
+ * El color del texto cambia exactamente al ritmo del fondo, sin desfase.
+ */
+function StageTabs({ active, onChange }) {
+  const listRef = useRef(null)
+  const [clip, setClip] = useState('inset(0 100% 0 0 round 999px)')
 
-export default function Engine() {
-  const [ref, visible] = useScrollReveal()
+  useLayoutEffect(() => {
+    const list = listRef.current
+    if (!list) return
+    const update = () => {
+      const btn = list.querySelector(`[data-id="${active}"]`)
+      if (!btn) return
+      const { offsetLeft, offsetWidth } = btn
+      const right = list.scrollWidth - offsetLeft - offsetWidth
+      setClip(`inset(0 ${right}px 0 ${offsetLeft}px round 999px)`)
+    }
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(list)
+    return () => ro.disconnect()
+  }, [active])
+
+  function onKeyDown(e) {
+    const i = STAGES.findIndex((s) => s.id === active)
+    const delta = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
+    if (!delta) return
+    e.preventDefault()
+    const next = STAGES[(i + delta + STAGES.length) % STAGES.length].id
+    onChange(next)
+    listRef.current?.querySelector(`[data-id="${next}"]`)?.focus()
+  }
 
   return (
-    <section id="engine" className="py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className={`max-w-2xl transition-all duration-700 ${
-          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} ref={ref}>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">The Engine</h2>
-          <p className="mt-4 text-lg text-slate-500 leading-relaxed">
-            All features over REST. Embed into any OSINT platform — or run standalone.
-          </p>
-        </div>
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 rounded-xl overflow-hidden border border-slate-200">
-          {features.map((f, i) => (
-            <FeatureCard key={f.title} feature={f} index={i} />
+    <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0 [scrollbar-width:none]">
+      <div className="relative w-max rounded-full border border-line bg-ink-2 p-1">
+        <div ref={listRef} role="tablist" aria-label="Etapas del motor" className="relative flex" onKeyDown={onKeyDown}>
+          {STAGES.map((s, i) => (
+            <button
+              key={s.id}
+              data-id={s.id}
+              role="tab"
+              id={`tab-${s.id}`}
+              aria-selected={active === s.id}
+              aria-controls={`panel-${s.id}`}
+              tabIndex={active === s.id ? 0 : -1}
+              onClick={() => onChange(s.id)}
+              className="link-hover flex h-9 items-center gap-2 rounded-full px-4 text-sm font-medium text-mute transition-colors duration-200"
+            >
+              <span className="font-mono text-[11px] text-dim">0{i + 1}</span>
+              {s.label}
+            </button>
           ))}
+          {/* Copia activa recortada */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 flex rounded-full bg-paper"
+            style={{ clipPath: clip, transition: 'clip-path 260ms var(--ease-out)' }}
+          >
+            {STAGES.map((s, i) => (
+              <span key={s.id} className="flex h-9 items-center gap-2 px-4 text-sm font-medium text-ink">
+                <span className="font-mono text-[11px] text-ink/50">0{i + 1}</span>
+                {s.label}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
-function FeatureCard({ feature: f, index }) {
-  const [ref, visible] = useScrollReveal()
+function Architecture() {
+  const nodes = [
+    { k: 'Fuentes', v: 'Wikimedia · Bluesky · RSS' },
+    { k: 'Ingesta', v: 'taq-ingestd' },
+    { k: 'Transporte', v: 'Redpanda' },
+    { k: 'Estado', v: 'PostgreSQL · ClickHouse' },
+    { k: 'Producto', v: 'taq-api · taqctl' },
+  ]
   return (
-    <div
-      ref={ref}
-      className={`bg-white p-7 transition-all duration-500 hover:bg-slate-50 group ${
-        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-      }`}
-      style={{ transitionDelay: `${index * 80}ms` }}
-    >
-      <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
-        {f.icon}
+    <div className="relative grid gap-3 sm:grid-cols-5 sm:gap-0">
+      {/* Línea con paquetes que viajan (solo escritorio) */}
+      <div aria-hidden="true" className="flow-line pointer-events-none absolute inset-x-[10%] top-[1.375rem] hidden h-px overflow-hidden sm:block">
+        {[0, 1, 2].map((i) => (
+          <span
+            key={i}
+            className="flow-packet absolute top-0 h-px w-[16%] bg-gradient-to-r from-transparent via-signal to-transparent"
+            style={{ '--i': i * 3, '--travel': '700%' }}
+          />
+        ))}
       </div>
-      <h3 className="text-base font-semibold text-slate-900">{f.title}</h3>
-      <p className="mt-2 text-sm text-slate-500 leading-relaxed">{f.desc}</p>
+      {nodes.map((n, i) => (
+        <Reveal key={n.k} index={i} className="relative flex items-start gap-3 sm:flex-col sm:items-center sm:text-center">
+          <span className="relative z-10 grid size-11 shrink-0 place-items-center rounded-full border border-line-2 bg-ink-2 font-mono text-xs text-mute">
+            0{i + 1}
+          </span>
+          <div className="sm:mt-3">
+            <div className="text-xs uppercase tracking-[0.12em] text-dim">{n.k}</div>
+            <div className="mt-1 font-mono text-[13px] text-paper">{n.v}</div>
+          </div>
+        </Reveal>
+      ))}
     </div>
+  )
+}
+
+export default function Engine() {
+  const [active, setActive] = useState(STAGES[0].id)
+  const stage = STAGES.find((s) => s.id === active)
+
+  return (
+    <section id="motor" className="scroll-mt-20 border-t border-line py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-8 md:grid-cols-[1fr_1fr] md:items-end">
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-signal">El motor · TaQ</p>
+            <h2 className="mt-4 text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+              Del dato a la decisión, <span className="font-serif italic tracking-normal text-mute">sin perder el porqué.</span>
+            </h2>
+          </Reveal>
+          <Reveal index={1}>
+            <p className="max-w-md text-base leading-relaxed text-mute md:ml-auto">
+              TaQ es un motor modular de inteligencia contextual defensiva, escrito en Rust. Recorre cinco etapas: ingerir, contextualizar, inferir, coordinar y aprender.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal className="mt-14" index={2}>
+          <StageTabs active={active} onChange={setActive} />
+
+          <div
+            id={`panel-${stage.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${stage.id}`}
+            className="mt-6 grid gap-6 rounded-3xl border border-line bg-ink-2 p-6 sm:p-10 md:grid-cols-[1.4fr_1fr]"
+          >
+            <div key={stage.id} className="stage-in">
+              <p className="text-xs uppercase tracking-[0.12em] text-dim">{stage.kind}</p>
+              <h3 className="mt-3 text-2xl font-medium tracking-[-0.02em] sm:text-3xl">{stage.title}</h3>
+              <p className="mt-4 max-w-xl leading-relaxed text-mute">{stage.body}</p>
+            </div>
+            <div key={`${stage.id}-code`} className="stage-in self-end md:justify-self-end" style={{ animationDelay: '50ms' }}>
+              <p className="text-xs uppercase tracking-[0.12em] text-dim">En el código</p>
+              <ul className="mt-3 flex flex-wrap gap-2 md:justify-end">
+                {stage.code.map((c) => (
+                  <li key={c} className="rounded-md border border-line-2 bg-ink px-2.5 py-1 font-mono text-[12px] text-paper/85">
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <style>{`
+            .stage-in { animation: stage-in 320ms var(--ease-out) both; }
+            @keyframes stage-in { from { opacity: 0; transform: translateY(6px); filter: blur(3px); } }
+            @media (prefers-reduced-motion: reduce) { .stage-in { animation: none; } }
+          `}</style>
+        </Reveal>
+
+        <div className="mt-24">
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-dim">Arquitectura</p>
+          </Reveal>
+          <div className="mt-8">
+            <Architecture />
+          </div>
+        </div>
+
+        <div className="mt-24 grid gap-4 md:grid-cols-2">
+          <Reveal className="rounded-3xl border border-line bg-ink-2 p-7 sm:p-8">
+            <h3 className="flex items-center gap-2.5 text-lg font-medium">
+              <span className="grid size-6 place-items-center rounded-full bg-signal/15 text-signal">
+                <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              En el código hoy
+            </h3>
+            <ul className="mt-5 space-y-3 text-[15px] text-mute">
+              {STATUS.today.map((t) => (
+                <li key={t} className="flex gap-3">
+                  <span className="mt-2.5 h-px w-3 shrink-0 bg-line-2" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal index={1} className="rounded-3xl border border-line p-7 sm:p-8">
+            <h3 className="flex items-center gap-2.5 text-lg font-medium">
+              <span className="grid size-6 place-items-center rounded-full bg-amber/15 text-amber">
+                <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 11l6-6M6 5h5v5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              Próximos frentes
+            </h3>
+            <ul className="mt-5 space-y-3 text-[15px] text-mute">
+              {STATUS.next.map((t) => (
+                <li key={t} className="flex gap-3">
+                  <span className="mt-2.5 h-px w-3 shrink-0 bg-line-2" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+
+        <Reveal className="mt-6 flex flex-col gap-6 rounded-3xl border border-line p-7 sm:p-8 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-xl text-sm leading-relaxed text-mute">
+            <span className="text-paper">Estado honesto:</span> TaQ está en desarrollo activo y todavía no es un servicio público. Se construye con la intención de ofrecerse gratis; primero, evidencia.
+          </p>
+          <a href={LINKS.taq} target="_blank" rel="noreferrer" className="btn btn-ghost shrink-0">
+            Ver el código
+            <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M5 11l6-6M6 5h5v5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </Reveal>
+
+        <Reveal className="marquee mt-16 overflow-hidden">
+          <div className="marquee-track flex w-max gap-10 font-mono text-sm text-dim">
+            {[...STACK, ...STACK].map((s, i) => (
+              <span key={i} className="flex items-center gap-10 whitespace-nowrap">
+                {s}
+                <span className="size-1 rounded-full bg-line-2" />
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
   )
 }

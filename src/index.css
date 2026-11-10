@@ -1,6 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
+
+/*
+  Tokens de movimiento (principios de Emil Kowalski):
+  - ease-out fuerte para todo lo que entra o responde a la persona.
+  - ease-in-out solo para lo que ya está en pantalla y se desplaza.
+  - Duraciones de UI por debajo de 300 ms; las revelaciones de scroll algo más largas.
+*/
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-ink: #0b0d0c;
+  --color-ink-2: #121514;
+  --color-ink-3: #1a1e1c;
+  --color-line: #252a27;
+  --color-line-2: #333a36;
+  --color-paper: #ecede8;
+  --color-mute: #9a9f9a;
+  --color-dim: #6b716c;
+  --color-signal: #68b897;
+  --color-signal-dim: #2c4d40;
+  --color-amber: #e0b469;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-ink);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+/* ---------- Botones: respuesta táctil al presionar ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  user-select: none;
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 200ms var(--ease-out),
+    border-color 200ms var(--ease-out),
+    color 200ms var(--ease-out);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn-primary {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.btn-ghost {
+  border: 1px solid var(--color-line-2);
+  color: var(--color-paper);
+}
+
+/* Hover solo en dispositivos con puntero fino: evita estados “pegados” en táctil */
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { background: #ffffff; }
+  .btn-ghost:hover { background: var(--color-ink-3); border-color: var(--color-dim); }
+  .card-hover:hover { border-color: var(--color-line-2); background: var(--color-ink-3); }
+  .card-hover:hover .card-arrow { transform: translate(2px, -2px); color: var(--color-paper); }
+  .link-hover:hover { color: var(--color-paper); }
+}
+
+.card-arrow {
+  transition: transform 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+
+}
+
+/* ---------- Revelado al hacer scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(4px);
+  transition:
+    opacity 600ms var(--ease-out),
+    transform 600ms var(--ease-out),
+    filter 600ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- Pulso de estado ---------- */
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse 2.4s var(--ease-out) infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  70%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* ---------- Cinta de fuentes (marquee) ---------- */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Partícula del pipeline ---------- */
+.flow-line {
+  background-image: linear-gradient(90deg, var(--color-line-2) 50%, transparent 0);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+}
+.flow-packet {
+  animation: packet 3.2s var(--ease-in-out) infinite;
+  animation-delay: calc(var(--i, 0) * 0.4s);
+}
+@keyframes packet {
+  0% { transform: translateX(-100%); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateX(var(--travel, 600%)); opacity: 0; }
+}
+
+/* ---------- Grano de fondo ---------- */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Movimiento reducido: se conserva la opacidad, se quita el desplazamiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    transform: none;
+    filter: none;
+    transition: opacity 300ms ease;
+    transition-delay: 0ms;
+  }
+  .btn:active { transform: none; }
+  .marquee-track,
+  .flow-packet,
+  .pulse-dot::after {
+    animation: none;
+  }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { transition-duration: 300ms !important; }
 }

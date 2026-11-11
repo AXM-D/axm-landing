@@ -1,0 +1,26 @@
+# AXM
+
+> AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, y backends y APIs en Rust y Python. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo y no es un servicio público.
+
+## Servicios y precios (precio fijo, por escrito)
+
+- Pipelines y motores de datos: 1,500 USD (27,000 MXN), 2 a 4 semanas. Hasta 3 fuentes de datos hacia un destino, con reintentos, cola de errores y observabilidad.
+- Vigilancia de marca y dominios: 600 USD (11,000 MXN), 1 a 2 semanas. Arranque con hasta 5 marcas o dominios vigilados, reglas versionadas y flujo de revisión.
+- Backends y APIs: 1,200 USD (22,000 MXN), 2 a 3 semanas. API documentada con OpenAPI, hasta unos 8 endpoints, métricas y runbook.
+- Auditoría de arquitectura: 450 USD (8,500 MXN), 1 semana. Un sistema y hasta 3 repositorios: mapa, riesgos priorizados y plan de acción.
+- Soporte mensual: 150 USD (2,800 MXN) al mes. Hasta 4 horas al mes de ajustes, revisión y atención de fallos después de la entrega. El monto final se acuerda según qué sistema se mantiene y qué tan crítico es.
+
+Primera llamada de 30 minutos sin costo. Precios en USD y MXN; el precio publicado es el precio final.
+
+## Proyectos (código público)
+
+- [TaQ](https://github.com/AXM-DEVs/TaQ): motor modular de inteligencia contextual defensiva en Rust, en desarrollo.
+- [Retro](https://github.com/AXM-D/retro): Plataforma local de defensa activa: honeypots SSH y HTTP detectan atacantes, OSINT construye su perfil y tú decides si bloquear, reportar o exportar. Sin nube.
+- [Project Analyzer](https://github.com/AXM-DEVs/project-analyzer): Analiza cualquier código fuente y genera documentación de arquitectura, diagramas y un mapa navegable del proyecto.
+- [TaQ Engine 1.x](https://github.com/AXM-DEVs/taq-engine): Primera versión del motor, en Python: playbooks YAML, scoring multifactor y consultas en lenguaje natural sobre una API REST. La base que llevó a TaQ.
+
+## Contacto
+
+- Email: axm.central@outlook.com
+- Web: https://axm-d.github.io/axm-landing/
+- GitHub: https://github.com/AXM-DEVs y https://github.com/AXM-D

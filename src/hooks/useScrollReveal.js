@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function useScrollReveal(options = {}) {
+/**
+ * Marca un elemento como visible la primera vez que entra en pantalla.
+ * El estilo vive en CSS (.reveal) para que la transición sea interrumpible
+ * y se pueda desactivar con prefers-reduced-motion.
+ */
+export default function useScrollReveal({ threshold = 0.15, rootMargin = '0px 0px -8% 0px' } = {}) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -11,14 +16,14 @@ export default function useScrollReveal(options = {}) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true)
-          observer.unobserve(el)
+          observer.disconnect()
         }
       },
-      { threshold: 0.1, ...options }
+      { threshold, rootMargin },
     )
     observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [threshold, rootMargin])
 
   return [ref, visible]
 }

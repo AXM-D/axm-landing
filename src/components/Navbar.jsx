@@ -1,69 +1,103 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const links = [
-  { label: 'Engine', href: '#engine' },
-  { label: 'DySH', href: '#dysh' },
-  { label: 'Pricing', href: '#compare' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Motor', href: '#motor' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Estudio', href: '#estudio' },
+  { label: 'Contacto', href: '#contacto' },
 ]
+
+const logo = `${import.meta.env.BASE_URL}axm-logo.jpeg`
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/90 backdrop-blur-lg shadow-sm border-b border-slate-200/50' : 'bg-transparent'
-    }`}>
-      <div className="mx-auto max-w-6xl px-6 h-16 md:h-20 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="relative">
-            <img src="/axm-logo.jpeg" alt="AXM" className="h-8 w-8 md:h-9 md:w-9 rounded-lg object-cover ring-1 ring-slate-200" />
-          </div>
-          <span className="text-lg font-semibold tracking-tight text-slate-900">AXM</span>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 border-b border-line bg-ink/75 backdrop-blur-md md:hidden ${scrolled ? 'opacity-100' : 'opacity-0'}`}
+        style={{ transition: 'opacity 300ms var(--ease-out)' }}
+      />
+      <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <a href="#inicio" className="flex items-center gap-2.5" aria-label="AXM, inicio">
+          <img src={logo} alt="" className="size-7 rounded-md object-cover ring-1 ring-line-2" />
+          <span className="text-[15px] font-semibold tracking-tight">AXM</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-10">
+        <nav
+          aria-label="Principal"
+          className={`hidden items-center gap-1 rounded-full border px-1.5 py-1.5 md:flex ${
+            scrolled ? 'border-line bg-ink-2/80 backdrop-blur-md' : 'border-transparent'
+          }`}
+          style={{ transition: 'background-color 300ms var(--ease-out), border-color 300ms var(--ease-out)' }}
+        >
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
+            <a key={l.href} href={l.href} className="link-hover rounded-full px-3.5 py-1.5 text-sm text-mute transition-colors duration-200">
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all">
-            Get in touch
-          </a>
-        </div>
+        </nav>
 
-        <button className="md:hidden p-2 -mr-2 rounded-lg hover:bg-slate-100 transition-colors" onClick={() => setOpen(!open)} aria-label="Menu">
-          <svg className="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {open ? (
-              <path strokeLinecap="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
+        <a href="#contacto" className="btn btn-primary hidden h-9 px-4 text-sm md:inline-flex">
+          Hablemos
+        </a>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="menu-movil"
+          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+          className="btn btn-ghost size-10 p-0 md:hidden"
+        >
+          <svg viewBox="0 0 20 20" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+            <path d={open ? 'M5 5l10 10' : 'M3 7h14'} style={{ transition: 'd 200ms var(--ease-out)' }} />
+            <path d={open ? 'M15 5L5 15' : 'M3 13h14'} style={{ transition: 'd 200ms var(--ease-out)' }} />
           </svg>
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden bg-white border-t border-slate-200 px-6 py-5 space-y-4 shadow-lg">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block text-sm text-slate-600 hover:text-slate-900">
-              {l.label}
-            </a>
-          ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5 rounded-lg text-center">
-            Get in touch
+      {/* Menú móvil: crece desde su disparador (origen arriba a la derecha), sin partir de escala 0 */}
+      <div
+        id="menu-movil"
+        className="absolute right-4 top-16 w-56 origin-top-right rounded-2xl border border-line-2 bg-ink-2/95 p-2 shadow-[0_16px_40px_rgb(0_0_0/0.5)] backdrop-blur-md md:hidden"
+        style={{
+          opacity: open ? 1 : 0,
+          transform: open ? 'scale(1)' : 'scale(0.95)',
+          pointerEvents: open ? 'auto' : 'none',
+          visibility: open ? 'visible' : 'hidden',
+          transition: open
+            ? 'opacity 200ms var(--ease-out), transform 200ms var(--ease-out), visibility 0s'
+            : 'opacity 150ms var(--ease-out), transform 150ms var(--ease-out), visibility 0s 150ms',
+        }}
+      >
+        {links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            onClick={() => setOpen(false)}
+            className="block rounded-xl px-3 py-2.5 text-sm text-mute active:bg-ink-3"
+          >
+            {l.label}
           </a>
-        </div>
-      )}
-    </nav>
+        ))}
+      </div>
+    </header>
   )
 }

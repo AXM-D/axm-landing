@@ -1,15 +1,19 @@
 import CopyEmail from './CopyEmail'
 import { Mail } from './icons'
-import { CONTACT_EMAIL, LINKS, TOPICS } from '../data'
+import { CONTACT_EMAIL, FREE_CALL, LINKS, SERVICES, TOPICS, formatMoney } from '../data'
+import { useCurrency } from './currency-context'
 
-function mailto(topic) {
+function mailto(topic, currency) {
   const t = TOPICS.find((x) => x.id === topic)
-  const subject = t && t.id !== 'otro' ? `Proyecto: ${t.label}` : 'Proyecto para AXM'
-  const body = ['Hola AXM:', '', t && t.id !== 'otro' ? `Me interesa: ${t.label}.` : 'Me interesa:', '', 'Qué necesito:', '', 'Qué tengo ya:', '', 'Para cuándo:', ''].join('\n')
+  const service = SERVICES.find((x) => x.id === topic)
+  const label = service ? `${service.title} (${formatMoney(service.price[currency], currency)})` : t && t.id !== 'otro' ? t.label : ''
+  const subject = label ? `Proyecto: ${service ? service.title : label}` : 'Proyecto para AXM'
+  const body = ['Hola AXM:', '', label ? `Me interesa: ${label}.` : 'Me interesa:', '', 'Qué necesito:', '', 'Qué tengo ya:', '', 'Para cuándo:', '', 'Quiero la llamada inicial de 30 minutos: sí / no', ''].join('\n')
   return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 export default function Contact({ topic, onTopic }) {
+  const { currency } = useCurrency()
   return (
     <section id="contacto" className="band-dark section">
       <div className="wrap">
@@ -17,7 +21,7 @@ export default function Contact({ topic, onTopic }) {
           <div>
             <h2 className="display text-[2.35rem] sm:text-6xl">Cuéntame tu proyecto</h2>
             <p className="mt-6 max-w-md text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
-              Elige el tema y se abre un email ya preparado. Lo leo yo y te respondo yo.
+              Elige el tema y se abre un email ya preparado. Lo leo yo y te respondo yo. {FREE_CALL.label}.
             </p>
           </div>
 
@@ -45,7 +49,7 @@ export default function Contact({ topic, onTopic }) {
             </fieldset>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href={mailto(topic)} className="btn btn-primary">
+              <a href={mailto(topic, currency)} className="btn btn-primary">
                 <Mail />
                 Escribir el email
               </a>

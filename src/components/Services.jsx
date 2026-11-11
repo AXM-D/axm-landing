@@ -1,15 +1,25 @@
-import { SERVICES } from '../data'
+import { FREE_CALL, MONTHLY, SERVICES, formatMoney } from '../data'
 import { ArrowRight, ArrowUpRight } from './icons'
+import CurrencyToggle from './CurrencyToggle'
+import { useCurrency } from './currency-context'
 
 export default function Services({ onPick }) {
+  const { currency } = useCurrency()
+
   return (
     <section id="servicios" className="band-light section">
       <div className="wrap">
         <div className="grid gap-6 md:grid-cols-[1fr_1fr] md:items-end md:gap-16">
-          <h2 className="display text-[2rem] sm:text-5xl">Qué puedes encargarme</h2>
-          <p className="max-w-md text-[1.0625rem] leading-relaxed text-muted md:justify-self-end">
-            Cuatro tipos de trabajo. En cada uno hay un proyecto propio, con el código público, donde puedes ver cómo lo hago.
-          </p>
+          <h2 className="display text-[2rem] sm:text-5xl">Qué puedes encargarme, y cuánto cuesta</h2>
+          <div className="md:justify-self-end">
+            <p className="max-w-md text-[1.0625rem] leading-relaxed text-muted">
+              Cuatro paquetes de precio fijo, por escrito. En cada uno hay un proyecto propio, con el código público, donde puedes ver cómo lo hago.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
+              <CurrencyToggle />
+              <p className="text-sm text-muted">{FREE_CALL.label}.</p>
+            </div>
+          </div>
         </div>
 
         <ul className="mt-12 border-t border-fg md:mt-16">
@@ -26,7 +36,14 @@ export default function Services({ onPick }) {
                   </a>
                 </p>
               </div>
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between md:flex-col md:items-start md:justify-start">
+              <div className="flex flex-col gap-6">
+                <div>
+                  <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="display-sm text-[1.75rem] tabular-nums sm:text-[2rem]">{formatMoney(s.price[currency], currency)}</span>
+                    <span className="text-sm text-muted">precio fijo · {s.time}</span>
+                  </p>
+                  <p className="mt-2 max-w-[28rem] text-[15px] leading-relaxed text-muted">{s.scope}</p>
+                </div>
                 <div>
                   <p className="text-sm font-medium">Te llevas</p>
                   <ul className="mt-2.5 space-y-2 text-[15px] text-muted">
@@ -37,8 +54,9 @@ export default function Services({ onPick }) {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-4 max-w-[28rem] text-sm leading-relaxed text-dim">Fuera del paquete, se cotiza aparte: {s.out}</p>
                 </div>
-                <a href="#contacto" onClick={() => onPick(s.id)} className="btn btn-ghost btn-sm shrink-0 self-start sm:self-auto md:self-start">
+                <a href="#contacto" onClick={() => onPick(s.id)} className="btn btn-ghost btn-sm self-start">
                   Pedir este trabajo
                   <ArrowRight className="btn-arrow size-3.5" />
                 </a>
@@ -46,6 +64,20 @@ export default function Services({ onPick }) {
             </li>
           ))}
         </ul>
+
+        <div className="mt-8 grid gap-x-12 gap-y-3 rounded-xl border border-line bg-surface p-6 md:grid-cols-[1.05fr_1fr] md:items-baseline md:p-8">
+          <div>
+            <h3 className="display-sm text-[1.25rem]">{MONTHLY.title}</h3>
+            <p className="mt-2 text-sm text-muted">Opcional, después de entregar.</p>
+          </div>
+          <div>
+            <p className="display-sm text-[1.5rem] tabular-nums">
+              {formatMoney(MONTHLY.price[currency], currency)}
+              <span className="ml-2 text-sm font-normal text-muted">al mes</span>
+            </p>
+            <p className="mt-2 max-w-[28rem] text-[15px] leading-relaxed text-muted">{MONTHLY.desc}</p>
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import MobileCta from './components/MobileCta'
 import { ToastProvider } from './components/Toast'
+import { CurrencyProvider } from './components/CurrencyProvider'
 
 export default function App() {
   // El servicio elegido en «Servicios» llega preseleccionado al email de contacto.
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <ToastProvider>
+      <CurrencyProvider>
       <a href="#contenido" className="btn btn-primary fixed left-4 top-3 z-50 -translate-y-20 focus-visible:translate-y-0">
         Saltar al contenido
       </a>
@@ -32,6 +34,7 @@ export default function App() {
       </main>
       <Footer />
       <MobileCta />
+      </CurrencyProvider>
     </ToastProvider>
   )
 }

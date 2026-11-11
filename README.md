@@ -69,3 +69,25 @@ Siguen los principios de Emil Kowalski:
 ## Accesibilidad
 
 Enlace para saltar al contenido, foco visible en las dos bandas, pestañas con flechas, Inicio y Fin, menú móvil que se cierra con Escape y devuelve el foco, preguntas con `<details>` nativo, y avisos por `role="status"` para el toast y el resultado de la demostración.
+
+## Precios
+
+Los precios viven en `src/data.js` (`SERVICES[].price`, `MONTHLY`) en USD y MXN. Al cambiarlos se actualizan solos la web, las preguntas frecuentes, el HTML estático para buscadores, los datos estructurados y `llms.txt`. El tipo de cambio es un supuesto (~18,5 MXN por USD, redondeado a mano), no un valor en vivo. La moneda se elige con el selector USD | MXN; por defecto MXN si el navegador está en `es-MX`. La llamada inicial de 30 minutos sin costo está en `FREE_CALL`.
+
+## Visibilidad en Google y en IAs
+
+Lo que hace el código (todo se genera en el build desde `src/data.js`, ver `vite.config.js`):
+
+- **HTML estático dentro de `#root`** con servicios, precios y preguntas. Google y la mayoría de los rastreadores de IA no ejecutan JavaScript, así que leen esto; React lo sustituye al arrancar.
+- **JSON-LD** (`Organization`/`ProfessionalService` con ofertas y precios, `WebSite`, `FAQPage`). Solo hechos reales: sin dirección, teléfono, reseñas ni valoraciones.
+- Título, descripción, canonical, Open Graph y Twitter con la URL absoluta de `SITE_URL`.
+- `sitemap.xml` y `llms.txt` generados en cada build.
+- Una pregunta «¿Qué es AXM?» con una definición corta y citable.
+
+Lo que depende de ti (no se puede hacer desde el código):
+
+1. **Search Console:** añadir la propiedad `https://axm-d.github.io/axm-landing/`, verificarla y enviar `sitemap.xml`.
+2. **Bing Webmaster Tools:** importar el sitio desde Search Console. Bing alimenta a varias búsquedas con IA.
+3. **Enlaces desde sitios que ya existen:** poner la URL de la web en el campo «Website» de las organizaciones `AXM-D` y `AXM-DEVs` de GitHub, en el README de cada repositorio y en tus perfiles (LinkedIn, Instagram).
+4. **Dominio propio.** Es lo que más pesa a medio plazo: `axm-d.github.io` hereda poca autoridad y la sigla «AXM» la comparten muchas empresas. Al comprarlo, cambiar `SITE_URL` en `src/data.js` (la base de Vite sale de ahí), añadir un archivo `public/CNAME` y configurarlo en Settings → Pages. Un dominio propio también permite un `robots.txt` en la raíz, que hoy no funciona porque el sitio vive en `/axm-landing/`.
+5. **Paciencia:** una web nueva tarda semanas en aparecer. Conviene medir con búsquedas de cola larga («vigilancia de marca y dominios», «auditoría de arquitectura de software», «pipelines de datos Rust») y no con «AXM» a secas.

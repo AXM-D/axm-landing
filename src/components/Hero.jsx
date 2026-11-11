@@ -1,8 +1,10 @@
-import { CTA_LABEL, LINKS } from '../data'
+import { CTA_LABEL, FREE_CALL, LINKS, formatMoney, minPrice } from '../data'
+import { useCurrency } from './currency-context'
 import SignalTrace from './SignalTrace'
 import { ArrowRight } from './icons'
 
 export default function Hero() {
+  const { currency } = useCurrency()
   return (
     <section id="inicio" className="band-dark overflow-hidden pb-16 pt-24 sm:pt-36 md:pb-24">
       <div className="wrap grid items-start gap-x-16 gap-y-10 lg:grid-cols-[1.22fr_0.78fr] lg:grid-rows-[auto_1fr] lg:gap-y-8">
@@ -26,6 +28,12 @@ export default function Hero() {
               Ver servicios
             </a>
           </div>
+          <p className="mt-4 text-sm text-muted">
+            <a href="#servicios" className="tlink font-medium text-fg tabular-nums">
+              Desde {formatMoney(minPrice(currency), currency)}
+            </a>
+            , precio fijo por escrito. {FREE_CALL.label}.
+          </p>
         </div>
 
         <div className="enter min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1" style={{ '--n': 4 }}>

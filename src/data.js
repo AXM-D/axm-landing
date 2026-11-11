@@ -1,7 +1,9 @@
 /*
   Todo el contenido editable de la web vive aquí.
   Reglas de honestidad (PRODUCT.md de TaQ): nada de testimonios, logos de clientes,
-  métricas, precios ni años de experiencia inventados. TaQ está en desarrollo.
+  métricas ni años de experiencia inventados. TaQ está en desarrollo.
+  Los precios los fija AXM: se editan aquí (SERVICES, MONTHLY) y se reflejan en la
+  web, en el HTML estático para buscadores, en llms.txt y en el JSON-LD.
 */
 
 export const CONTACT_EMAIL = 'axm.central@outlook.com'
@@ -10,6 +12,9 @@ export const SITE_URL = 'https://axm-d.github.io/axm-landing/'
 
 /* La misma etiqueta en la barra, el hero y la barra móvil: una acción, un nombre. */
 export const CTA_LABEL = 'Cuéntame tu proyecto'
+
+/* Llamada inicial sin costo. Se agenda por email. */
+export const FREE_CALL = { minutes: 30, label: 'Primera llamada de 30 minutos sin costo' }
 
 export const LINKS = {
   githubDevs: 'https://github.com/AXM-DEVs',
@@ -65,6 +70,10 @@ export const DEMO_STAGES = ['Ingerir', 'Contextualizar', 'Inferir', 'Coordinar',
 export const SERVICES = [
   {
     id: 'pipelines',
+    price: { USD: 1500, MXN: 27000 },
+    time: '2 a 4 semanas',
+    scope: 'Hasta 3 fuentes de datos hacia un destino, con reintentos, cola de errores y observabilidad.',
+    out: 'más de 3 fuentes, migraciones de datos históricos y operación continua.',
     title: 'Pipelines y motores de datos',
     desc: 'Ingesta de eventos, colas, deduplicación y almacenamiento analítico, diseñados para que cada dato pueda explicar de dónde viene.',
     gets: ['Pipeline en marcha con reintentos y cola de errores', 'Métricas y trazas desde el primer día', 'Documentación para operarlo sin mí'],
@@ -72,6 +81,10 @@ export const SERVICES = [
   },
   {
     id: 'vigilancia',
+    price: { USD: 600, MXN: 11000 },
+    time: '1 a 2 semanas',
+    scope: 'Arranque con hasta 5 marcas o dominios vigilados, reglas versionadas y flujo de revisión.',
+    out: 'más de 5 entidades vigiladas, nuevos conectores y acciones automáticas.',
     title: 'Vigilancia de marca y dominios',
     desc: 'Monitorización defensiva de marcas, dominios y organizaciones con fuentes públicas, reglas que se pueden leer y revisión humana.',
     gets: ['Listas vigiladas y reglas versionadas', 'Hallazgos que una persona revisa y aprueba', 'Registro de por qué saltó cada alerta'],
@@ -79,6 +92,10 @@ export const SERVICES = [
   },
   {
     id: 'backends',
+    price: { USD: 1200, MXN: 22000 },
+    time: '2 a 3 semanas',
+    scope: 'API documentada con OpenAPI, hasta unos 8 endpoints, métricas y runbook.',
+    out: 'interfaz web, autenticación de terceros y más de 8 endpoints.',
     title: 'Backends y APIs',
     desc: 'Servicios en Rust y Python con observabilidad incluida: sabes qué hace el sistema y por qué falla cuando falla.',
     gets: ['API documentada con OpenAPI', 'Métricas, trazas y comprobaciones de salud', 'Runbook de operación'],
@@ -86,6 +103,10 @@ export const SERVICES = [
   },
   {
     id: 'auditoria',
+    price: { USD: 450, MXN: 8500 },
+    time: '1 semana',
+    scope: 'Un sistema y hasta 3 repositorios: mapa, riesgos priorizados y plan de acción.',
+    out: 'más de 3 repositorios y la ejecución de las correcciones.',
     title: 'Auditoría de arquitectura',
     desc: 'Revisión y documentación de un sistema que ya existe, para saber qué hay, qué falta y qué arreglar primero.',
     gets: ['Mapa del sistema y diagramas', 'Riesgos ordenados por prioridad', 'Plan de qué arreglar primero'],
@@ -93,9 +114,16 @@ export const SERVICES = [
   },
 ]
 
+/* Soporte después de la entrega: el monto final depende del tamaño y la criticidad del sistema. */
+export const MONTHLY = {
+  title: 'Soporte mensual',
+  price: { USD: 150, MXN: 2800 },
+  desc: 'Hasta 4 horas al mes de ajustes, revisión y atención de fallos después de la entrega. El monto final se acuerda según qué sistema se mantiene y qué tan crítico es.',
+}
+
 /* ---------- Proceso (es una secuencia real: por eso va numerada) ---------- */
 export const PROCESS = [
-  { t: 'Me cuentas el problema', d: 'Un email con lo que necesitas y lo que ya tienes. Te respondo yo, no un formulario.' },
+  { t: 'Me cuentas el problema', d: 'Un email con lo que necesitas. Si encaja, agendamos una llamada de 30 minutos sin costo. Te respondo yo, no un formulario.' },
   { t: 'Propuesta por escrito', d: 'Alcance, entregables y lo que queda fuera. Si no puedo ayudarte, te lo digo antes de empezar.' },
   { t: 'Entregas pequeñas', d: 'Construyo por partes que puedes ver y probar. El código es tuyo desde el primer commit.' },
   { t: 'Entrega y operación', d: 'Documentación, métricas y un runbook para que el sistema no dependa de mí.' },
@@ -204,12 +232,28 @@ export const PRINCIPLES = [
 /* ---------- Preguntas ---------- */
 export const FAQ = [
   {
+    q: '¿Qué es AXM?',
+    a: 'AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, y backends y APIs en Rust y Python. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo.',
+  },
+  {
     q: '¿Con quién voy a hablar?',
     a: 'Conmigo. AXM es un estudio de una sola persona: quien te responde es quien diseña y escribe el código. No hay comerciales ni intermediarios.',
   },
   {
     q: '¿Cuánto cuesta un proyecto?',
-    a: 'No hay una tarifa publicada porque depende del alcance. Cuéntame qué necesitas y te envío una propuesta por escrito con lo que incluye y lo que no, antes de empezar nada.',
+    a: `Cada servicio tiene un paquete de precio fijo, publicado en esta página: desde ${both(minPrice)} hasta ${both(maxPrice)}. Lo que quede fuera del paquete se cotiza por escrito antes de empezar.`,
+  },
+  {
+    q: '¿La primera llamada tiene costo?',
+    a: 'No. La llamada inicial de 30 minutos es gratis y sin compromiso: sirve para que me cuentes el problema y yo te diga si puedo ayudarte y con qué paquete.',
+  },
+  {
+    q: '¿Qué pasa después de entregar?',
+    a: `Entregas con documentación y runbook para que el sistema no dependa de mí. Si quieres soporte, hay un plan mensual de hasta 4 horas desde ${bothMoney(MONTHLY.price)}; el monto final depende de qué sistema es y qué tan crítico.`,
+  },
+  {
+    q: '¿Emites factura?',
+    a: 'Por ahora no. El precio publicado es el precio final.',
   },
   {
     q: '¿Puedo usar o contratar TaQ ya?',
@@ -225,9 +269,32 @@ export const FAQ = [
   },
   {
     q: '¿Cómo empezamos?',
-    a: 'Escríbeme a axm.central@outlook.com con el problema, lo que ya tienes y cuándo lo necesitas. A partir de ahí te digo si puedo ayudarte y cómo.',
+    a: 'Escríbeme a axm.central@outlook.com con el problema, lo que ya tienes y cuándo lo necesitas. A partir de ahí te digo si puedo ayudarte y cómo; la primera llamada de 30 minutos no tiene costo.',
   },
 ]
 
 /* Temas para preparar el email de contacto */
 export const TOPICS = [...SERVICES.map((s) => ({ id: s.id, label: s.title })), { id: 'otro', label: 'Otra cosa' }]
+
+/* ---------- Precios ---------- */
+export const CURRENCIES = ['USD', 'MXN']
+
+export function formatMoney(value, currency) {
+  return `${new Intl.NumberFormat('es-MX', { maximumFractionDigits: 0 }).format(value)} ${currency}`
+}
+
+export function minPrice(currency) {
+  return Math.min(...SERVICES.map((s) => s.price[currency]))
+}
+
+export function maxPrice(currency) {
+  return Math.max(...SERVICES.map((s) => s.price[currency]))
+}
+
+/* «450 USD (8,500 MXN)» */
+function bothMoney(price) {
+  return `${formatMoney(price.USD, 'USD')} (${formatMoney(price.MXN, 'MXN')})`
+}
+function both(fn) {
+  return bothMoney({ USD: fn('USD'), MXN: fn('MXN') })
+}

@@ -1,0 +1,52 @@
+import { SERVICES } from '../data'
+import { ArrowRight, ArrowUpRight } from './icons'
+
+export default function Services({ onPick }) {
+  return (
+    <section id="servicios" className="band-light section">
+      <div className="wrap">
+        <div className="grid gap-6 md:grid-cols-[1fr_1fr] md:items-end md:gap-16">
+          <h2 className="display text-[2rem] sm:text-5xl">Qué puedes encargarme</h2>
+          <p className="max-w-md text-[1.0625rem] leading-relaxed text-muted md:justify-self-end">
+            Cuatro tipos de trabajo. En cada uno hay un proyecto propio, con el código público, donde puedes ver cómo lo hago.
+          </p>
+        </div>
+
+        <ul className="mt-12 border-t border-fg md:mt-16">
+          {SERVICES.map((s) => (
+            <li key={s.id} className="grid gap-x-12 gap-y-6 border-b border-line py-8 md:grid-cols-[1.05fr_1fr] md:py-10">
+              <div>
+                <h3 className="display-sm text-[1.375rem] sm:text-[1.625rem]">{s.title}</h3>
+                <p className="mt-3 max-w-[30rem] leading-relaxed text-muted">{s.desc}</p>
+                <p className="mt-4 text-sm text-dim">
+                  Lo puedes ver en{' '}
+                  <a href={s.proof.href} target="_blank" rel="noreferrer" className="tlink inline-flex items-center gap-1 font-medium text-fg">
+                    {s.proof.label}
+                    <ArrowUpRight className="size-3.5" />
+                  </a>
+                </p>
+              </div>
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between md:flex-col md:items-start md:justify-start">
+                <div>
+                  <p className="text-sm font-medium">Te llevas</p>
+                  <ul className="mt-2.5 space-y-2 text-[15px] text-muted">
+                    {s.gets.map((g) => (
+                      <li key={g} className="flex gap-3">
+                        <span aria-hidden="true" className="mt-[0.7em] h-px w-3 shrink-0 bg-line-strong" />
+                        {g}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <a href="#contacto" onClick={() => onPick(s.id)} className="btn btn-ghost btn-sm shrink-0 self-start sm:self-auto md:self-start">
+                  Pedir este trabajo
+                  <ArrowRight className="btn-arrow size-3.5" />
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

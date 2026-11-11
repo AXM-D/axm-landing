@@ -1,12 +1,20 @@
+import { Wordmark } from './Logo'
+
 export default function Footer() {
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-xs text-dim sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p>© {new Date().getFullYear()} AXM · Estudio independiente</p>
-        <p>Hecho a mano con React y CSS. Sin rastreadores.</p>
-        <a href="#inicio" className="link-hover transition-colors duration-200">
-          Volver arriba ↑
-        </a>
+    <footer className="band-dark overflow-hidden border-t border-line">
+      <div className="wrap pb-8 pt-12 md:pt-16">
+        <Wordmark className="h-auto w-full text-fg" title="AXM" />
+        <div className="mt-8 flex flex-col gap-3 text-sm text-muted sm:flex-row sm:items-center sm:justify-between md:mt-10">
+          <p>
+            <span lang="en">Context Infrastructure Systems</span>
+            <span className="text-dim">, {new Date().getFullYear()}</span>
+          </p>
+          <p>Sin cookies ni rastreadores.</p>
+          <a href="#inicio" className="tlink -my-3 py-3 text-fg">
+            Volver arriba
+          </a>
+        </div>
       </div>
     </footer>
   )

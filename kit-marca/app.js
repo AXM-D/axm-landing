@@ -143,7 +143,7 @@
   }
 
   /* ---------- escritorio ---------- */
-  function drawDesk(s) {
+  function drawDesk() {
     const icons = $('desk-icons')
     const url = folderURL
     icons.innerHTML = ['Clientes', 'Facturas', 'Fotos', 'Pedidos'].map((n) => `<span class="dicon"><img src="${url}" alt=""><span>${n}</span></span>`).join('')
@@ -158,7 +158,7 @@
     fc.width = fc.height = 256
     drawFolder(fc, s)
     folderURL = fc.toDataURL('image/png')
-    drawDesk(s)
+    drawDesk()
     drawTerm(s)
   }
 

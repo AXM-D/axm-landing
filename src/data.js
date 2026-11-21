@@ -230,6 +230,15 @@ export const PROJECTS = [
     cta: 'Probar la demo',
   },
   {
+    name: 'Gemelo',
+    kind: 'Demo',
+    desc: 'Escribe tu dominio y genera las variantes que usaría un estafador (letras cambiadas, otra terminación, palabras añadidas); luego comprueba en DNS cuáles ya existen y si tienen web o correo.',
+    stack: 'JavaScript, DNS sobre HTTPS',
+    href: `${SITE_URL}gemelo/`,
+    status: 'consultas DNS reales',
+    cta: 'Probar la demo',
+  },
+  {
     name: 'Retro',
     kind: 'Defensa activa',
     desc: 'Plataforma local de defensa activa: honeypots SSH y HTTP detectan atacantes, OSINT construye su perfil y tú decides si bloquear, reportar o exportar. Sin nube.',

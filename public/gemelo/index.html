@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gemelo | Dominios parecidos al tuyo que ya existen</title>
+  <meta name="description" content="Escribe tu dominio y Gemelo genera las variantes que usaría un estafador (letras cambiadas, terminaciones, guiones) y comprueba en DNS cuáles ya están registradas. Proyecto demo de AXM.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Cpath d='M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z' fill='%234aa3f0'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../" aria-label="AXM, ir al sitio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z"/></svg>
+      AXM
+    </a>
+    <p class="note">Proyecto demo de AXM. <a href="https://github.com/AXM-D/axm-landing/tree/main/public/gemelo">Ver el código</a></p>
+  </header>
+
+  <main>
+    <form class="ask" id="form" autocomplete="off">
+      <label for="domain" class="ask-q">¿Quién tiene un dominio parecido a</label>
+      <div class="ask-row">
+        <input id="domain" name="domain" type="text" inputmode="url" spellcheck="false" placeholder="tuempresa.com.mx" required aria-describedby="hint">
+        <span class="ask-q ask-end" aria-hidden="true">?</span>
+      </div>
+      <div class="ask-actions">
+        <button type="submit" class="btn btn-solid" id="go">Buscar parecidos</button>
+        <p class="hint" id="hint">Genero las variantes que usaría alguien para suplantarte y pregunto al DNS público cuáles ya existen. Tarda unos segundos.</p>
+      </div>
+    </form>
+
+    <section class="results" id="results" hidden aria-live="polite">
+      <div class="summary">
+        <p class="sum-main" id="sum-main"></p>
+        <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+        <p class="sum-sub" id="sum-sub"></p>
+      </div>
+      <ol class="list" id="list"></ol>
+      <details class="free">
+        <summary id="free-sum">Variantes libres</summary>
+        <p class="free-note">Nadie las tiene registradas hoy. Las de riesgo alto conviene registrarlas tú antes que otro.</p>
+        <ul class="free-list" id="free"></ul>
+      </details>
+    </section>
+
+    <section class="how" aria-labelledby="how-h">
+      <h2 id="how-h">Cómo se lee</h2>
+      <dl>
+        <div><dt><span class="tag t-high">Alto</span></dt><dd>Registrado y con correo configurado: puede enviar o recibir emails en tu nombre.</dd></div>
+        <div><dt><span class="tag t-mid">Medio</span></dt><dd>Registrado y con una web en marcha. Ábrelo con cuidado y revisa qué muestra.</dd></div>
+        <div><dt><span class="tag t-low">Bajo</span></dt><dd>Registrado pero sin web ni correo. Puede estar aparcado o esperando.</dd></div>
+      </dl>
+      <p class="caveat">Que un dominio parecido exista no significa que sea malicioso: puede ser de otra empresa legítima. Esto es un primer filtro; el siguiente paso es que una persona lo revise. Las consultas van a <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/">DNS sobre HTTPS de Cloudflare</a> desde tu navegador; no hay servidor de AXM en medio.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Para uso defensivo: vigilar tu propia marca. Así empieza el servicio de vigilancia de marca y dominios de AXM.</p>
+    <p>Hecho por <a href="../">AXM</a>, ingeniería de datos y seguridad defensiva.</p>
+  </footer>
+
+  <script src="variants.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

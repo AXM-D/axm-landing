@@ -8,7 +8,7 @@
 
 export const CONTACT_EMAIL = 'axm.central@outlook.com'
 
-export const SITE_URL = 'https://axm-d.github.io/axm-landing/'
+export const SITE_URL = 'https://axm.qd.je/'
 
 /* La misma etiqueta en la barra, el hero y la barra móvil: una acción, un nombre. */
 export const CTA_LABEL = 'Cuéntame tu proyecto'

@@ -2,7 +2,7 @@
 
 Landing de AXM. Sirve de destino para los vídeos de Instagram y TikTok: dice qué hace AXM, enseña cómo trabaja con una demostración del motor **TaQ** ([AXM-DEVs/TaQ](https://github.com/AXM-DEVs/TaQ)) y lleva al contacto.
 
-Publicada en <https://axm-d.github.io/axm-landing/>.
+Publicada en <https://axm.qd.je/> (dominio propio, configurado con `public/CNAME`).
 
 ## Desarrollo
 
@@ -86,8 +86,8 @@ Lo que hace el código (todo se genera en el build desde `src/data.js`, ver `vit
 
 Lo que depende de ti (no se puede hacer desde el código):
 
-1. **Search Console:** añadir la propiedad `https://axm-d.github.io/axm-landing/`, verificarla y enviar `sitemap.xml`.
+1. **Search Console:** añadir la propiedad `https://axm.qd.je/`, verificarla y enviar `sitemap.xml`.
 2. **Bing Webmaster Tools:** importar el sitio desde Search Console. Bing alimenta a varias búsquedas con IA.
 3. **Enlaces desde sitios que ya existen:** poner la URL de la web en el campo «Website» de las organizaciones `AXM-D` y `AXM-DEVs` de GitHub, en el README de cada repositorio y en tus perfiles (LinkedIn, Instagram).
-4. **Dominio propio.** Es lo que más pesa a medio plazo: `axm-d.github.io` hereda poca autoridad y la sigla «AXM» la comparten muchas empresas. Al comprarlo, cambiar `SITE_URL` en `src/data.js` (la base de Vite sale de ahí), añadir un archivo `public/CNAME` y configurarlo en Settings → Pages. Un dominio propio también permite un `robots.txt` en la raíz, que hoy no funciona porque el sitio vive en `/axm-landing/`.
+4. **Dominio propio.** Hecho: la web vive en `axm.qd.je` (DNS en DigitalPlat con los 4 registros A de GitHub Pages y `www` como CNAME). Si cambia el dominio, actualizar `SITE_URL` en `src/data.js`, `public/CNAME` y `public/robots.txt`.
 5. **Paciencia:** una web nueva tarda semanas en aparecer. Conviene medir con búsquedas de cola larga («vigilancia de marca y dominios», «auditoría de arquitectura de software», «pipelines de datos Rust») y no con «AXM» a secas.

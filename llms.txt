@@ -1,6 +1,6 @@
 # AXM
 
-> AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, y backends y APIs en Rust y Python. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo y no es un servicio público.
+> AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, backends y APIs en Rust y Python, y deja los equipos de una empresa con su marca y lo básico de seguridad. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo y no es un servicio público.
 
 ## Servicios y precios (precio fijo, por escrito)
 
@@ -8,6 +8,7 @@
 - Vigilancia de marca y dominios: 600 USD (11,000 MXN), 1 a 2 semanas. Arranque con hasta 5 marcas o dominios vigilados, reglas versionadas y flujo de revisión.
 - Backends y APIs: 1,200 USD (22,000 MXN), 2 a 3 semanas. API documentada con OpenAPI, hasta unos 8 endpoints, métricas y runbook.
 - Auditoría de arquitectura: 450 USD (8,500 MXN), 1 semana. Un sistema y hasta 3 repositorios: mapa, riesgos priorizados y plan de acción.
+- Identidad y seguridad en equipos: 350 USD (6,500 MXN), 1 semana. Hasta 5 equipos Windows: tu marca aplicada, contraseñas migradas a una bóveda cifrada y protecciones básicas instaladas.
 - Soporte mensual: 150 USD (2,800 MXN) al mes. Hasta 4 horas al mes de ajustes, revisión y atención de fallos después de la entrega. El monto final se acuerda según qué sistema se mantiene y qué tan crítico es.
 
 Primera llamada de 30 minutos sin costo. Precios en USD y MXN; el precio publicado es el precio final.

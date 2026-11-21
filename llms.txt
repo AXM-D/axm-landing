@@ -16,6 +16,9 @@ Primera llamada de 30 minutos sin costo. Precios en USD y MXN; el precio publica
 ## Proyectos (código público)
 
 - [TaQ](https://github.com/AXM-DEVs/TaQ): motor modular de inteligencia contextual defensiva en Rust, en desarrollo.
+- [AXM Scan](https://axm.qd.je/scan/): Revisión de seguridad de cualquier dominio: suplantación de correo, DNSSEC, certificados, subdominios secuestrables, registro y dominios parecidos. Nota de la A a la F, informe en PDF y registros sugeridos. En español e inglés.
+- [Calor MTY](https://axm.qd.je/calor-mty/): Riesgo de golpe de calor hora a hora en 10 municipios del área metropolitana, con las horas seguras para salir, noches sin alivio y cómo se compara el día con 30 años de historia.
+- [Agua MTY](https://axm.qd.je/agua-mty/): Lluvia y evaporación en las cuencas de El Cuchillo, Cerro Prieto y La Boca: cómo va el año frente a lo normal y frente a 2022, el año de la crisis del agua, con 30 años de datos diarios.
 - [Sinfuga](https://axm.qd.je/sinfuga/): Pega un .env o código y marca las claves, tokens y contraseñas que no deberían salir de tu computadora, con qué hacer en cada caso. Corre entero en el navegador: no envía nada.
 - [Aire CDMX](https://axm.qd.je/aire-cdmx/): Calidad del aire en cinco zonas de la Ciudad de México, hora a hora: las últimas 48 horas y el pronóstico, con una respuesta clara para hoy y el origen de cada dato a la vista.
 - [Gemelo](https://axm.qd.je/gemelo/): Escribe tu dominio y genera las variantes que usaría un estafador (letras cambiadas, otra terminación, palabras añadidas); luego comprueba en DNS cuáles ya existen y si tienen web o correo.

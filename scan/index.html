@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AXM Scan | Revisión gratuita de seguridad de tu dominio</title>
+  <meta name="description" content="Revisión gratuita de seguridad de cualquier dominio: suplantación de correo (SPF, DMARC, DKIM), DNSSEC, certificados, subdominios expuestos, riesgo de secuestro de subdominios, registro y dominios parecidos. Sin registro. Free domain security scan by AXM.">
+  <meta property="og:title" content="AXM Scan: revisión gratuita de seguridad de tu dominio">
+  <meta property="og:description" content="Correo, DNS, certificados, subdominios y suplantación. Nota de la A a la F e informe, gratis y sin registro.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Cpath d='M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z' fill='%234aa3f0'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../" aria-label="AXM">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z"/></svg>
+      AXM <span class="prod">Scan</span>
+    </a>
+    <div class="top-r">
+      <span class="free" data-i="free">Gratis, sin registro</span>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <form class="ask" id="form" autocomplete="off">
+      <h1 data-i="h1">¿Qué tan fácil es suplantar tu dominio?</h1>
+      <div class="ask-row">
+        <input id="domain" type="text" inputmode="url" spellcheck="false" placeholder="tuempresa.com" aria-label="Dominio" required>
+        <button type="submit" class="go" id="go" data-i="go">Revisar</button>
+      </div>
+      <p class="hint" id="hint" data-i="hint">Revisamos correo, DNS, certificados, subdominios, registro y dominios parecidos. Solo usamos información pública, igual que un atacante. Tarda entre 10 y 40 segundos.</p>
+    </form>
+
+    <section class="report" id="report" hidden>
+      <div class="summary">
+        <div class="grade" id="grade" aria-live="polite"><span id="grade-l">–</span></div>
+        <div class="sum-text">
+          <p class="sum-dom" id="sum-dom"></p>
+          <h2 class="sum-h" id="sum-h"></h2>
+          <p class="sum-p" id="sum-p"></p>
+          <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+          <div class="actions">
+            <button type="button" class="btn" id="print" data-i="print">Guardar informe en PDF</button>
+            <button type="button" class="btn" id="json" data-i="json">Descargar datos (JSON)</button>
+            <button type="button" class="btn" id="share" data-i="share">Copiar enlace</button>
+          </div>
+        </div>
+      </div>
+      <div class="sections" id="sections"></div>
+    </section>
+
+    <section class="about" id="about">
+      <div>
+        <h2 data-i="aboutH">Qué revisa</h2>
+        <ul class="checks-list" data-i-html="aboutList"></ul>
+      </div>
+      <div>
+        <h2 data-i="privH">Privacidad</h2>
+        <p data-i="privP">No hay servidor de AXM en medio: tu navegador consulta directamente el DNS público de Cloudflare, el registro de transparencia de certificados crt.sh y RDAP. No guardamos qué dominios revisas.</p>
+        <h2 data-i="helpH">¿Necesitas ayuda para arreglarlo?</h2>
+        <p data-i-html="helpP"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p data-i-html="foot"></p>
+  </footer>
+
+  <script src="../gemelo/variants.js"></script>
+  <script src="i18n.js"></script>
+  <script src="checks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -212,6 +212,15 @@ export const STATUS = {
 /* ---------- Proyectos ---------- */
 export const PROJECTS = [
   {
+    name: 'Sinfuga',
+    kind: 'Demo',
+    desc: 'Pega un .env o código y marca las claves, tokens y contraseñas que no deberían salir de tu computadora, con qué hacer en cada caso. Corre entero en el navegador: no envía nada.',
+    stack: 'HTML, CSS, JavaScript',
+    href: `${SITE_URL}sinfuga/`,
+    status: 'pruébala en el navegador',
+    cta: 'Probar la demo',
+  },
+  {
     name: 'Retro',
     kind: 'Defensa activa',
     desc: 'Plataforma local de defensa activa: honeypots SSH y HTTP detectan atacantes, OSINT construye su perfil y tú decides si bloquear, reportar o exportar. Sin nube.',

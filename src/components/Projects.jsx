@@ -8,7 +8,7 @@ export default function Projects() {
         <div className="grid gap-6 border-t border-line pt-16 md:grid-cols-[1fr_1fr] md:items-end md:gap-16 md:pt-24">
           <h2 className="display text-[2rem] sm:text-5xl">Otros proyectos propios</h2>
           <p className="max-w-md text-[1.0625rem] leading-relaxed text-muted md:justify-self-end">
-            Herramientas de seguridad, datos y arquitectura. Todas nacen de un problema real y están publicadas en GitHub.
+            Herramientas de seguridad, datos y arquitectura. Todas nacen de un problema real y tienen el código en GitHub. Las demos se prueban directamente en el navegador.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export default function Projects() {
                   <p className="mt-3 font-mono text-[13px] text-dim">{p.stack}</p>
                 </div>
                 <span className="flex items-center gap-1.5 text-sm font-medium text-fg md:justify-self-end">
-                  Ver en GitHub
+                  {p.cta ?? 'Ver en GitHub'}
                   <ArrowUpRight className="row-arrow size-4 text-muted" />
                 </span>
               </a>

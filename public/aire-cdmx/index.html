@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aire CDMX | Calidad del aire por zona, hora a hora</title>
+  <meta name="description" content="Calidad del aire en cinco zonas de la Ciudad de México: las últimas 48 horas y el pronóstico de hoy, con el origen de cada dato. Proyecto demo de AXM.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Cpath d='M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z' fill='%238fd18a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../" aria-label="AXM, ir al sitio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z"/></svg>
+      AXM
+    </a>
+    <p class="note">Proyecto demo de AXM. <a href="https://github.com/AXM-D/axm-landing/tree/main/public/aire-cdmx">Ver el código</a></p>
+  </header>
+
+  <main>
+    <section class="now" id="now" aria-live="polite">
+      <p class="now-q">¿Cómo está el aire en el Centro ahora?</p>
+      <h1 class="now-a" id="now-answer">Cargando datos…</h1>
+      <p class="now-detail" id="now-detail"></p>
+    </section>
+
+    <section class="zones" aria-labelledby="zones-h">
+      <div class="zones-head">
+        <h2 id="zones-h">Cinco zonas, hora a hora</h2>
+        <p>Cada cuadro es una hora: las últimas 48 y el pronóstico hasta medianoche. El cuadro con borde es la hora actual. Pasa el cursor o toca un cuadro para ver el valor.</p>
+      </div>
+      <div class="grid" id="grid" role="img" aria-label="Índice de calidad del aire por zona y hora"></div>
+      <div class="axis" id="axis" aria-hidden="true"></div>
+      <ul class="legend" id="legend"></ul>
+      <details class="table-view">
+        <summary>Ver los datos de ahora como tabla</summary>
+        <table id="table"></table>
+      </details>
+    </section>
+
+    <section class="lineage" aria-labelledby="lin-h">
+      <h2 id="lin-h">De dónde sale cada dato</h2>
+      <ol class="steps" id="steps">
+        <li><strong>Fuente.</strong> API pública de calidad del aire de Open-Meteo, que usa el modelo europeo CAMS. Es un modelo, no las estaciones de la red de monitoreo de la ciudad.</li>
+        <li><strong>Consulta.</strong> Una sola petición para los cinco puntos, desde tu navegador. <span id="fetched"></span></li>
+        <li><strong>Transformación.</strong> Las horas se alinean a la hora de la Ciudad de México y cada valor del índice US AQI se asigna a su categoría de la EPA.</li>
+        <li><strong>Medido y pronosticado.</strong> Lo anterior a la hora actual se dibuja sólido; lo posterior, con trama, porque todavía es pronóstico.</li>
+      </ol>
+      <p class="official">Para avisos y contingencias oficiales consulta <a href="https://www.aire.cdmx.gob.mx/">aire.cdmx.gob.mx</a>.</p>
+    </section>
+  </main>
+
+  <div class="tip" id="tip" role="tooltip" hidden></div>
+
+  <footer class="foot">
+    <p>Sin servidor ni cookies: la página pide los datos directamente a Open-Meteo cada vez que la abres.</p>
+    <p>Hecho por <a href="../">AXM</a>, ingeniería de datos y seguridad defensiva.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

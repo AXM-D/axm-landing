@@ -221,6 +221,15 @@ export const PROJECTS = [
     cta: 'Probar la demo',
   },
   {
+    name: 'Aire CDMX',
+    kind: 'Demo',
+    desc: 'Calidad del aire en cinco zonas de la Ciudad de México, hora a hora: las últimas 48 horas y el pronóstico, con una respuesta clara para hoy y el origen de cada dato a la vista.',
+    stack: 'JavaScript, API de Open-Meteo',
+    href: `${SITE_URL}aire-cdmx/`,
+    status: 'datos en vivo',
+    cta: 'Probar la demo',
+  },
+  {
     name: 'Retro',
     kind: 'Defensa activa',
     desc: 'Plataforma local de defensa activa: honeypots SSH y HTTP detectan atacantes, OSINT construye su perfil y tú decides si bloquear, reportar o exportar. Sin nube.',

@@ -17,6 +17,7 @@ Primera llamada de 30 minutos sin costo. Precios en USD y MXN; el precio publica
 
 - [TaQ](https://github.com/AXM-DEVs/TaQ): motor modular de inteligencia contextual defensiva en Rust, en desarrollo.
 - [Sinfuga](https://axm-d.github.io/axm-landing/sinfuga/): Pega un .env o código y marca las claves, tokens y contraseñas que no deberían salir de tu computadora, con qué hacer en cada caso. Corre entero en el navegador: no envía nada.
+- [Aire CDMX](https://axm-d.github.io/axm-landing/aire-cdmx/): Calidad del aire en cinco zonas de la Ciudad de México, hora a hora: las últimas 48 horas y el pronóstico, con una respuesta clara para hoy y el origen de cada dato a la vista.
 - [Retro](https://github.com/AXM-D/retro): Plataforma local de defensa activa: honeypots SSH y HTTP detectan atacantes, OSINT construye su perfil y tú decides si bloquear, reportar o exportar. Sin nube.
 - [Project Analyzer](https://github.com/AXM-DEVs/project-analyzer): Analiza cualquier código fuente y genera documentación de arquitectura, diagramas y un mapa navegable del proyecto.
 - [TaQ Engine 1.x](https://github.com/AXM-DEVs/taq-engine): Primera versión del motor, en Python: playbooks YAML, scoring multifactor y consultas en lenguaje natural sobre una API REST. La base que llevó a TaQ.

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kit de marca | Tus equipos con tu marca</title>
+  <meta name="description" content="Escribe el nombre de tu negocio, elige un color y mira cómo quedarían tus computadoras: fondo, pantalla de bloqueo, carpetas y terminal. Descarga el fondo y el icono. Proyecto demo de AXM.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Cpath d='M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z' fill='%23ededed'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../" aria-label="AXM, ir al sitio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z"/></svg>
+      AXM
+    </a>
+    <p class="note">Proyecto demo de AXM. <a href="https://github.com/AXM-D/axm-landing/tree/main/public/kit-marca">Ver el código</a></p>
+  </header>
+
+  <main>
+    <h1>Así se verían tus computadoras con tu marca.</h1>
+
+    <div class="studio">
+      <form class="controls" id="controls" autocomplete="off">
+        <label class="field">
+          <span>Nombre del negocio</span>
+          <input id="name" type="text" maxlength="28" value="Café Bruma">
+        </label>
+
+        <fieldset class="field">
+          <legend>Color de marca</legend>
+          <div class="swatches" id="swatches"></div>
+          <label class="custom"><input id="color" type="color" value="#2f7d6d"> Otro color</label>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Fondo</legend>
+          <div class="seg" role="radiogroup">
+            <label><input type="radio" name="style" value="ondas" checked> Ondas</label>
+            <label><input type="radio" name="style" value="rejilla"> Rejilla</label>
+            <label><input type="radio" name="style" value="liso"> Liso</label>
+          </div>
+        </fieldset>
+
+        <div class="downloads">
+          <button type="button" class="btn btn-solid" id="dl-wall">Descargar fondo 1920×1080</button>
+          <button type="button" class="btn" id="dl-lock">Descargar pantalla de bloqueo</button>
+          <button type="button" class="btn" id="dl-folder">Descargar icono de carpeta</button>
+        </div>
+      </form>
+
+      <div class="previews">
+        <figure class="screen">
+          <div class="monitor">
+            <canvas id="wall" width="1920" height="1080" aria-label="Vista previa del escritorio"></canvas>
+            <div class="desk-icons" id="desk-icons"></div>
+            <div class="taskbar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <figcaption>Escritorio</figcaption>
+        </figure>
+
+        <div class="row">
+          <figure class="screen small">
+            <div class="monitor"><canvas id="lock" width="1920" height="1080" aria-label="Vista previa de la pantalla de bloqueo"></canvas></div>
+            <figcaption>Pantalla de bloqueo</figcaption>
+          </figure>
+          <figure class="screen small">
+            <pre class="term" id="term" aria-label="Vista previa de la terminal"></pre>
+            <figcaption>Terminal</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <section class="service">
+      <h2>Lo que hace el servicio completo</h2>
+      <p>Esta página solo genera las imágenes. En el servicio <a href="../#servicios">Identidad y seguridad en equipos</a> lo aplico en hasta 5 computadoras: fondo y bloqueo, carpetas con tu logo, terminal y navegador con tu marca, la información del fabricante en Windows, y scripts para deshacerlo todo. Además migro las contraseñas del equipo a una bóveda cifrada.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Todo se dibuja en tu navegador. «Café Bruma» es un negocio inventado para el ejemplo.</p>
+    <p>Hecho por <a href="../">AXM</a>, ingeniería de datos y seguridad defensiva.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

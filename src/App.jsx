@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import FreeScan from './components/FreeScan'
 import Services from './components/Services'
 import Process from './components/Process'
 import Engine from './components/Engine'
@@ -25,6 +26,7 @@ export default function App() {
       <Navbar />
       <main id="contenido">
         <Hero />
+        <FreeScan />
         <Services onPick={setTopic} />
         <Process />
         <Engine />

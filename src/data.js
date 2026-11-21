@@ -23,6 +23,7 @@ export const LINKS = {
 }
 
 export const NAV = [
+  { label: 'Scan gratis', href: '#scan' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Proceso', href: '#proceso' },
   { label: 'TaQ', href: '#taq' },
@@ -65,6 +66,20 @@ export const DEMO_SIGNALS = [
 ]
 
 export const DEMO_STAGES = ['Ingerir', 'Contextualizar', 'Inferir', 'Coordinar', 'Aprender']
+
+/* ---------- Servicio gratuito ---------- */
+export const SCAN = {
+  href: `${SITE_URL}scan/`,
+  badge: 'Gratis, sin registro, en español e inglés',
+  title: '¿Qué tan fácil es suplantar tu dominio?',
+  desc: 'AXM Scan revisa cualquier dominio con información pública, como lo haría un atacante, y te da una nota de la A a la F con cómo arreglar cada punto y el registro DNS sugerido.',
+  checks: [
+    'Correo: SPF, DMARC, DKIM y MTA-STS',
+    'DNSSEC, CAA y servidores de nombres',
+    'Subdominios expuestos y secuestrables',
+    'Caducidad, bloqueo y dominios parecidos',
+  ],
+}
 
 /* ---------- Servicios ---------- */
 export const SERVICES = [
@@ -212,6 +227,33 @@ export const STATUS = {
 /* ---------- Proyectos ---------- */
 export const PROJECTS = [
   {
+    name: 'AXM Scan',
+    kind: 'Servicio gratis',
+    desc: 'Revisión de seguridad de cualquier dominio: suplantación de correo, DNSSEC, certificados, subdominios secuestrables, registro y dominios parecidos. Nota de la A a la F, informe en PDF y registros sugeridos. En español e inglés.',
+    stack: 'JavaScript, DNS sobre HTTPS, Certificate Transparency, RDAP',
+    href: `${SITE_URL}scan/`,
+    status: 'úsalo ya',
+    cta: 'Revisar mi dominio',
+  },
+  {
+    name: 'Calor MTY',
+    kind: 'Monterrey',
+    desc: 'Riesgo de golpe de calor hora a hora en 10 municipios del área metropolitana, con las horas seguras para salir, noches sin alivio y cómo se compara el día con 30 años de historia.',
+    stack: 'JavaScript, Open-Meteo, ERA5',
+    href: `${SITE_URL}calor-mty/`,
+    status: 'datos en vivo',
+    cta: 'Ver el calor de hoy',
+  },
+  {
+    name: 'Agua MTY',
+    kind: 'Monterrey',
+    desc: 'Lluvia y evaporación en las cuencas de El Cuchillo, Cerro Prieto y La Boca: cómo va el año frente a lo normal y frente a 2022, el año de la crisis del agua, con 30 años de datos diarios.',
+    stack: 'JavaScript, Open-Meteo, ERA5',
+    href: `${SITE_URL}agua-mty/`,
+    status: '30 años de datos',
+    cta: 'Ver las cuencas',
+  },
+  {
     name: 'Sinfuga',
     kind: 'Demo',
     desc: 'Pega un .env o código y marca las claves, tokens y contraseñas que no deberían salir de tu computadora, con qué hacer en cada caso. Corre entero en el navegador: no envía nada.',
@@ -310,6 +352,10 @@ export const FAQ = [
   {
     q: '¿Puedo usar o contratar TaQ ya?',
     a: 'Todavía no. TaQ está en desarrollo y no es un servicio público. Lo que sí puedes encargar es trabajo a medida con las mismas piezas y la misma forma de construir.',
+  },
+  {
+    q: '¿AXM Scan es gratis de verdad?',
+    a: 'Sí. No pide registro ni correo y no hay versión de pago escondida. Corre en tu navegador con información pública (DNS, certificados y registro del dominio) y no guarda qué dominios revisas. Si el informe muestra problemas y quieres ayuda, ahí entra el trabajo pagado.',
   },
   {
     q: '¿Haces pentesting o seguridad ofensiva?',

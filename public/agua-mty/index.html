@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agua MTY | ¿Está lloviendo lo suficiente en las cuencas de Monterrey?</title>
+  <meta name="description" content="Lluvia y evaporación en las cuencas de El Cuchillo, Cerro Prieto y La Boca, las presas que abastecen a Monterrey: cómo va este año frente a lo normal y frente a 2022, con 30 años de datos. Por AXM.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Cpath d='M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z' fill='%234aa3f0'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../" aria-label="AXM, ir al sitio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z"/></svg>
+      AXM
+    </a>
+    <p class="note">Hecho en Monterrey por AXM. <a href="https://github.com/AXM-D/axm-landing/tree/main/public/agua-mty">Ver el código</a></p>
+  </header>
+
+  <main>
+    <section class="hero" aria-live="polite">
+      <p class="q">¿Está lloviendo lo suficiente donde nace el agua de Monterrey?</p>
+      <h1 id="answer">Cargando 30 años de lluvia…</h1>
+      <p class="lede" id="lede"></p>
+      <div class="dams" id="dams"></div>
+    </section>
+
+    <section class="block" aria-labelledby="h-cum">
+      <div class="head">
+        <h2 id="h-cum">Lluvia acumulada en el año</h2>
+        <div class="tabs" role="tablist" id="tabs"></div>
+      </div>
+      <figure class="chart" id="cum"></figure>
+      <p class="caption" id="cum-cap"></p>
+    </section>
+
+    <section class="block" aria-labelledby="h-month">
+      <div class="head">
+        <h2 id="h-month">Mes a mes</h2>
+        <p>Lluvia de cada mes de este año frente a la mediana de 1995 a 2024 en la misma cuenca. Los meses en curso o por venir aparecen sin barra.</p>
+      </div>
+      <figure class="chart" id="months"></figure>
+    </section>
+
+    <section class="block" aria-labelledby="h-bal">
+      <div class="head">
+        <h2 id="h-bal">Lo que llueve menos lo que se evapora</h2>
+        <p>Balance acumulado: lluvia menos evapotranspiración de referencia. En el noreste casi siempre es negativo; lo que importa es si este año va más abajo que lo normal.</p>
+      </div>
+      <figure class="chart" id="bal"></figure>
+    </section>
+
+    <section class="block method" aria-labelledby="h-met">
+      <h2 id="h-met">De dónde salen los datos</h2>
+      <ol>
+        <li><strong>Lluvia y evaporación.</strong> Reanálisis ERA5 y modelos de <a href="https://open-meteo.com/">Open-Meteo</a>, día por día desde 1995, promediados en dos puntos de cada cuenca. Los últimos 5 días aún no están en el archivo.</li>
+        <li><strong>Cuencas.</strong> El Cuchillo (río San Juan, aguas abajo del área metropolitana), Cerro Prieto (río Pablillo, Linares) y La Boca (río Ramos, Santiago). Son aproximaciones con puntos representativos, no los polígonos oficiales.</li>
+        <li><strong>Lo que no mide.</strong> El nivel de las presas depende también de extracciones y escurrimientos. Para el almacenamiento real consulta el <a href="https://sih.conagua.gob.mx/presas.html">monitoreo de presas de CONAGUA</a> y a <a href="https://www.sadm.gob.mx/">Agua y Drenaje de Monterrey</a>.</li>
+      </ol>
+    </section>
+  </main>
+
+  <div class="tip" id="tip" role="tooltip" hidden></div>
+  <footer class="foot">
+    <p>Sin registro ni cookies. Unos 2 MB de datos históricos se piden a Open-Meteo al abrir la página.</p>
+    <p><a href="../">AXM</a>, ingeniería de datos y seguridad defensiva. Monterrey, Nuevo León.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calor MTY | Riesgo de calor hora a hora en el área metropolitana de Monterrey</title>
+  <meta name="description" content="Riesgo de golpe de calor por municipio del área metropolitana de Monterrey: sensación térmica, índice UV, noches sin alivio y las horas seguras para salir. Comparado con 30 años de historia. Por AXM.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Cpath d='M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z' fill='%23f3a65a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../" aria-label="AXM, ir al sitio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12.5 48 30 16h4l17.5 32h-7.3L32 25.8 19.8 48z"/></svg>
+      AXM
+    </a>
+    <p class="note">Hecho en Monterrey por AXM. <a href="https://github.com/AXM-D/axm-landing/tree/main/public/calor-mty">Ver el código</a></p>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" aria-live="polite">
+      <label class="pick">
+        <span>Municipio</span>
+        <select id="muni"></select>
+      </label>
+      <h1 id="answer">Cargando…</h1>
+      <p class="lede" id="lede"></p>
+      <dl class="facts" id="facts"></dl>
+    </section>
+
+    <section class="block" aria-labelledby="h-day">
+      <div class="head">
+        <h2 id="h-day">Hoy y los próximos dos días</h2>
+        <p>Sensación térmica hora a hora. La banda sombreada son las horas con riesgo; los tramos marcados abajo son las horas seguras para salir (sensación bajo 32 °C, UV bajo 6, de 6 a 22 h).</p>
+      </div>
+      <figure class="chart" id="chart" aria-label="Gráfica de sensación térmica"></figure>
+      <div class="windows" id="windows"></div>
+    </section>
+
+    <section class="block" aria-labelledby="h-map">
+      <div class="head">
+        <h2 id="h-map">Todo el área metropolitana</h2>
+        <p>Cada cuadro es una hora. Pasa el cursor o toca un cuadro para ver la sensación térmica y el UV. Toca el nombre de un municipio para verlo arriba.</p>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="axis" id="axis" aria-hidden="true"></div>
+      <ul class="legend" id="legend"></ul>
+    </section>
+
+    <section class="block" aria-labelledby="h-hist">
+      <div class="head">
+        <h2 id="h-hist">¿Es normal para esta época?</h2>
+        <p>La máxima pronosticada para hoy frente a las máximas de los mismos días del año (±7 días) desde 1995, en el mismo punto.</p>
+      </div>
+      <figure class="hist" id="hist" aria-label="Distribución histórica de máximas"></figure>
+      <p class="hist-note" id="hist-note"></p>
+    </section>
+
+    <section class="block method" aria-labelledby="h-met">
+      <h2 id="h-met">Cómo se calcula</h2>
+      <ol>
+        <li><strong>Datos.</strong> Pronóstico horario y 30 años de historia de <a href="https://open-meteo.com/">Open-Meteo</a> (modelos meteorológicos y reanálisis ERA5), pedidos desde tu navegador.</li>
+        <li><strong>Riesgo.</strong> Categorías del índice de calor del Servicio Meteorológico de EE. UU. aplicadas a la sensación térmica: precaución desde 27 °C, precaución extrema desde 32 °C, peligro desde 41 °C y peligro extremo desde 54 °C.</li>
+        <li><strong>Noche sin alivio.</strong> Si la mínima de la noche no baja de 24 °C, el cuerpo no se recupera y el riesgo del día siguiente sube, sobre todo para personas mayores.</li>
+        <li><strong>Límites.</strong> Es un modelo, no una estación en tu calle. Para alertas oficiales consulta a Protección Civil de Nuevo León.</li>
+      </ol>
+    </section>
+  </main>
+
+  <div class="tip" id="tip" role="tooltip" hidden></div>
+
+  <footer class="foot">
+    <p>Sin registro ni cookies. Los datos se piden a Open-Meteo cada vez que abres la página.</p>
+    <p><a href="../">AXM</a>, ingeniería de datos y seguridad defensiva. Monterrey, Nuevo León.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

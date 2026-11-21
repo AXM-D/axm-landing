@@ -13,7 +13,7 @@ export default function Services({ onPick }) {
           <h2 className="display text-[2rem] sm:text-5xl">Qué puedes encargarme, y cuánto cuesta</h2>
           <div className="md:justify-self-end">
             <p className="max-w-md text-[1.0625rem] leading-relaxed text-muted">
-              Cuatro paquetes de precio fijo, por escrito. En cada uno hay un proyecto propio, con el código público, donde puedes ver cómo lo hago.
+              Cinco paquetes de precio fijo, por escrito. Cada uno viene con algo que puedes ver: un proyecto propio con el código público o una demo en vivo.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
               <CurrencyToggle />
@@ -28,13 +28,17 @@ export default function Services({ onPick }) {
               <div>
                 <h3 className="display-sm text-[1.375rem] sm:text-[1.625rem]">{s.title}</h3>
                 <p className="mt-3 max-w-[30rem] leading-relaxed text-muted">{s.desc}</p>
-                <p className="mt-4 text-sm text-dim">
-                  Lo puedes ver en{' '}
-                  <a href={s.proof.href} target="_blank" rel="noreferrer" className="tlink inline-flex items-center gap-1 font-medium text-fg">
-                    {s.proof.label}
-                    <ArrowUpRight className="size-3.5" />
-                  </a>
-                </p>
+                {s.proof ? (
+                  <p className="mt-4 text-sm text-dim">
+                    Lo puedes ver en{' '}
+                    <a href={s.proof.href} target="_blank" rel="noreferrer" className="tlink inline-flex items-center gap-1 font-medium text-fg">
+                      {s.proof.label}
+                      <ArrowUpRight className="size-3.5" />
+                    </a>
+                  </p>
+                ) : (
+                  <p className="mt-4 text-sm text-dim">{s.demo}.</p>
+                )}
               </div>
               <div className="flex flex-col gap-6">
                 <div>

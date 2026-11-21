@@ -18,7 +18,7 @@ import {
 const BASE = new URL(SITE_URL).pathname
 
 const TITLE = 'AXM | Ingeniería de datos y seguridad defensiva en Rust y Python'
-const DESCRIPTION = `Ingeniería de datos y seguridad defensiva en Rust y Python: pipelines, vigilancia de marca y dominios, backends y APIs. Desde ${formatMoney(minPrice('USD'), 'USD')}, precio fijo. ${FREE_CALL.label}.`
+const DESCRIPTION = `Ingeniería de datos y seguridad defensiva en Rust y Python: pipelines, vigilancia de marca y dominios, backends y APIs, e identidad y seguridad en equipos. Desde ${formatMoney(minPrice('USD'), 'USD')}, precio fijo. ${FREE_CALL.label}.`
 
 const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 const money = (p) => `${formatMoney(p.USD, 'USD')} (${formatMoney(p.MXN, 'MXN')})`
@@ -53,6 +53,7 @@ function jsonLd() {
         'Vigilancia de marca y dominios',
         'Inteligencia de fuentes abiertas (OSINT) defensiva',
         'Backends y APIs',
+        'Seguridad de equipos y gestión de contraseñas',
         'Rust',
         'Python',
       ],
@@ -76,7 +77,7 @@ function staticContent() {
   return `<div style="max-width:48rem;margin:0 auto;padding:2rem 1.25rem;font-family:system-ui,sans-serif;line-height:1.55;color:#ededed;background:#0a0a0b">
 <header><p><strong>AXM</strong>, estudio independiente</p>
 <h1>Ingeniería de datos y seguridad defensiva, sin intermediarios.</h1>
-<p>AXM construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, y backends y APIs en Rust y Python. Es el autor de TaQ, un motor de inteligencia contextual en desarrollo. Hablas directamente con quien diseña y escribe el código.</p>
+<p>AXM construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, backends y APIs en Rust y Python, y deja los equipos de una empresa con su marca y lo básico de seguridad. Es el autor de TaQ, un motor de inteligencia contextual en desarrollo. Hablas directamente con quien diseña y escribe el código.</p>
 <p>${esc(FREE_CALL.label)}. Escribe a <a href="mailto:${esc(CONTACT_EMAIL)}">${esc(CONTACT_EMAIL)}</a>.</p></header>
 <main>
 <section><h2>Servicios y precios</h2>
@@ -97,7 +98,7 @@ ${FAQ.map((f) => `<h3>${esc(f.q)}</h3><p>${esc(f.a)}</p>`).join('\n')}</section>
 function llmsTxt() {
   return `# AXM
 
-> AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, y backends y APIs en Rust y Python. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo y no es un servicio público.
+> AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, backends y APIs en Rust y Python, y deja los equipos de una empresa con su marca y lo básico de seguridad. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo y no es un servicio público.
 
 ## Servicios y precios (precio fijo, por escrito)
 

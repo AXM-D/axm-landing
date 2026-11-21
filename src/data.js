@@ -112,6 +112,22 @@ export const SERVICES = [
     gets: ['Mapa del sistema y diagramas', 'Riesgos ordenados por prioridad', 'Plan de qué arreglar primero'],
     proof: { label: 'Project Analyzer', href: 'https://github.com/AXM-DEVs/project-analyzer' },
   },
+  {
+    id: 'equipos',
+    price: { USD: 350, MXN: 6500 },
+    time: '1 semana',
+    scope: 'Hasta 5 equipos Windows: tu marca aplicada, contraseñas migradas a una bóveda cifrada y protecciones básicas instaladas.',
+    out: 'más de 5 equipos, administración remota continua, filtrado de red y listas blancas de aplicaciones.',
+    title: 'Identidad y seguridad en equipos',
+    desc: 'Los equipos de tu empresa con tu marca y lo básico de seguridad bien hecho: las contraseñas salen del Excel, las claves no se cuelan en el código y nadie borra lo que no debe por accidente.',
+    gets: [
+      'Fondo, pantalla de bloqueo, iconos, terminal y navegador con tu marca, con scripts para deshacerlo',
+      'Contraseñas migradas a una bóveda cifrada, con informe de las débiles y repetidas',
+      'Escáner de secretos antes de cada commit y bloqueo de comandos destructivos en asistentes de IA',
+    ],
+    /* Sin repositorio público: se enseña funcionando en la llamada. */
+    demo: 'Lo ves funcionando en la primera llamada',
+  },
 ]
 
 /* Soporte después de la entrega: el monto final depende del tamaño y la criticidad del sistema. */
@@ -233,7 +249,7 @@ export const PRINCIPLES = [
 export const FAQ = [
   {
     q: '¿Qué es AXM?',
-    a: 'AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, y backends y APIs en Rust y Python. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo.',
+    a: 'AXM es un estudio independiente de ingeniería de datos y seguridad defensiva. Construye pipelines de datos, vigilancia de marca y dominios con fuentes públicas, backends y APIs en Rust y Python, y deja los equipos de una empresa con su marca y lo básico de seguridad. Es el autor de TaQ, un motor de inteligencia contextual que sigue en desarrollo.',
   },
   {
     q: '¿Con quién voy a hablar?',

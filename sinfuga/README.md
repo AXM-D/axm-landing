@@ -2,9 +2,9 @@
 
 Pega un `.env`, un archivo de configuración o código, y Sinfuga marca las claves, tokens y contraseñas que no deberían salir de tu computadora. También copia una versión con los secretos tachados, para pegarla en un ticket o un chat.
 
-**Pruébalo:** https://axm-d.github.io/axm-landing/sinfuga/
+**Pruébalo:** https://axm.qd.je/sinfuga/
 
-> Proyecto demo de [AXM](https://axm-d.github.io/axm-landing/). No es un encargo de un cliente: es una muestra de cómo trabajo.
+> Proyecto demo de [AXM](https://axm.qd.je/). No es un encargo de un cliente: es una muestra de cómo trabajo.
 
 ## Qué detecta
 

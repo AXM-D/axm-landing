@@ -239,6 +239,15 @@ export const PROJECTS = [
     cta: 'Probar la demo',
   },
   {
+    name: 'Kit de marca',
+    kind: 'Demo',
+    desc: 'Escribe el nombre de un negocio y elige un color: ves cómo quedarían sus computadoras (escritorio, pantalla de bloqueo, carpetas y terminal) y descargas el fondo y el icono listos para usar.',
+    stack: 'JavaScript, Canvas',
+    href: `${SITE_URL}kit-marca/`,
+    status: 'genera y descarga',
+    cta: 'Probar la demo',
+  },
+  {
     name: 'Retro',
     kind: 'Defensa activa',
     desc: 'Plataforma local de defensa activa: honeypots SSH y HTTP detectan atacantes, OSINT construye su perfil y tú decides si bloquear, reportar o exportar. Sin nube.',

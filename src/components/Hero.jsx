@@ -1,4 +1,4 @@
-import { CTA_LABEL, FREE_CALL, PROJECTS, formatMoney, minPrice } from '../data'
+import { CTA_LABEL, FREE_CALL, PROJECTS, TOOLS_PAGE, formatMoney, minPrice } from '../data'
 import { useCurrency } from './currency-context'
 import SignalTrace from './SignalTrace'
 import { ArrowRight } from './icons'
@@ -42,9 +42,9 @@ export default function Hero() {
         <p className="enter max-w-md text-sm leading-relaxed text-dim lg:col-start-1 lg:row-start-2" style={{ '--n': 4 }}>
           Autor de TaQ, un motor de inteligencia contextual en Rust.{' '}
           <a href="#proyectos" className="tlink text-muted">
-            {PROJECTS.length + 1} proyectos propios con el código abierto
-          </a>
-          , entre ellos <a href="#scan" className="tlink text-muted">AXM Scan</a>, gratis para cualquiera.
+            {PROJECTS.length + 1} proyectos propios
+          </a>{' '}
+          y <a href={TOOLS_PAGE.href} className="tlink text-muted">{TOOLS_PAGE.count} herramientas gratis y demos</a>, con el código abierto.
         </p>
       </div>
     </section>

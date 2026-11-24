@@ -139,7 +139,7 @@ function seo() {
       this.emitFile({
         type: 'asset',
         fileName: 'sitemap.xml',
-        source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE_URL}</loc><lastmod>${today}</lastmod></url>\n</urlset>\n`,
+        source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', 'herramientas/', 'scan/', 'lockcheck/', 'calor-mty/', 'agua-mty/', 'gemelo/', 'sinfuga/', 'aire-cdmx/', 'kit-marca/'].map((p) => `  <url><loc>${SITE_URL}${p}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`,
       })
       this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt() })
     },

@@ -1,4 +1,4 @@
-import { PROJECTS } from '../data'
+import { PROJECTS, TOOLS_PAGE } from '../data'
 import { ArrowUpRight } from './icons'
 
 export default function Projects() {
@@ -8,7 +8,7 @@ export default function Projects() {
         <div className="grid gap-6 border-t border-line pt-16 md:grid-cols-[1fr_1fr] md:items-end md:gap-16 md:pt-24">
           <h2 className="display text-[2rem] sm:text-5xl">Otros proyectos propios</h2>
           <p className="max-w-md text-[1.0625rem] leading-relaxed text-muted md:justify-self-end">
-            Herramientas de seguridad, datos y arquitectura. Todas nacen de un problema real y tienen el código en GitHub. Las demos se prueban directamente en el navegador.
+            Herramientas de seguridad, datos y arquitectura. Todas nacen de un problema real y tienen el código en GitHub.
           </p>
         </div>
 
@@ -39,6 +39,13 @@ export default function Projects() {
             </li>
           ))}
         </ul>
+        <p className="mt-8 text-[15px] text-muted">
+          Herramientas gratis, proyectos de Monterrey y demos de cada servicio:{' '}
+          <a href={TOOLS_PAGE.href} className="tlink inline-flex items-center gap-1 font-medium text-fg">
+            ver la página de herramientas
+            <ArrowUpRight className="size-3.5" />
+          </a>
+        </p>
       </div>
     </section>
   )

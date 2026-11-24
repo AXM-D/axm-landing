@@ -23,7 +23,7 @@ export const LINKS = {
 }
 
 export const NAV = [
-  { label: 'Scan gratis', href: '#scan' },
+  { label: 'Gratis', href: `${SITE_URL}herramientas/` },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Proceso', href: '#proceso' },
   { label: 'TaQ', href: '#taq' },
@@ -80,6 +80,9 @@ export const SCAN = {
     'Caducidad, bloqueo y dominios parecidos',
   ],
 }
+
+/* Página aparte con todo lo gratuito, lo de Monterrey y las demos */
+export const TOOLS_PAGE = { href: `${SITE_URL}herramientas/`, count: 8 }
 
 export const LOCKCHECK = {
   href: `${SITE_URL}lockcheck/`,
@@ -234,78 +237,6 @@ export const STATUS = {
 
 /* ---------- Proyectos ---------- */
 export const PROJECTS = [
-  {
-    name: 'AXM Scan',
-    kind: 'Servicio gratis',
-    desc: 'Revisión de seguridad de cualquier dominio: suplantación de correo, DNSSEC, certificados, subdominios secuestrables, registro y dominios parecidos. Nota de la A a la F, informe en PDF y registros sugeridos. En español e inglés.',
-    stack: 'JavaScript, DNS sobre HTTPS, Certificate Transparency, RDAP',
-    href: `${SITE_URL}scan/`,
-    status: 'úsalo ya',
-    cta: 'Revisar mi dominio',
-  },
-  {
-    name: 'AXM Lockcheck',
-    kind: 'Servicio gratis',
-    desc: 'Escáner de dependencias contra los gusanos de npm y PyPI de 2026: malware conocido, vulnerabilidades con la versión que las corrige, versiones recién publicadas, scripts de instalación y typosquatting. Informe en Markdown para pegar en un pull request. En español e inglés.',
-    stack: 'JavaScript, OSV.dev, registro de npm',
-    href: `${SITE_URL}lockcheck/`,
-    status: 'úsalo ya',
-    cta: 'Revisar mis dependencias',
-  },
-  {
-    name: 'Calor MTY',
-    kind: 'Monterrey',
-    desc: 'Riesgo de golpe de calor hora a hora en 10 municipios del área metropolitana, con las horas seguras para salir, noches sin alivio y cómo se compara el día con 30 años de historia.',
-    stack: 'JavaScript, Open-Meteo, ERA5',
-    href: `${SITE_URL}calor-mty/`,
-    status: 'datos en vivo',
-    cta: 'Ver el calor de hoy',
-  },
-  {
-    name: 'Agua MTY',
-    kind: 'Monterrey',
-    desc: 'Lluvia y evaporación en las cuencas de El Cuchillo, Cerro Prieto y La Boca: cómo va el año frente a lo normal y frente a 2022, el año de la crisis del agua, con 30 años de datos diarios.',
-    stack: 'JavaScript, Open-Meteo, ERA5',
-    href: `${SITE_URL}agua-mty/`,
-    status: '30 años de datos',
-    cta: 'Ver las cuencas',
-  },
-  {
-    name: 'Sinfuga',
-    kind: 'Demo',
-    desc: 'Pega un .env o código y marca las claves, tokens y contraseñas que no deberían salir de tu computadora, con qué hacer en cada caso. Corre entero en el navegador: no envía nada.',
-    stack: 'HTML, CSS, JavaScript',
-    href: `${SITE_URL}sinfuga/`,
-    status: 'pruébala en el navegador',
-    cta: 'Probar la demo',
-  },
-  {
-    name: 'Aire CDMX',
-    kind: 'Demo',
-    desc: 'Calidad del aire en cinco zonas de la Ciudad de México, hora a hora: las últimas 48 horas y el pronóstico, con una respuesta clara para hoy y el origen de cada dato a la vista.',
-    stack: 'JavaScript, API de Open-Meteo',
-    href: `${SITE_URL}aire-cdmx/`,
-    status: 'datos en vivo',
-    cta: 'Probar la demo',
-  },
-  {
-    name: 'Gemelo',
-    kind: 'Demo',
-    desc: 'Escribe tu dominio y genera las variantes que usaría un estafador (letras cambiadas, otra terminación, palabras añadidas); luego comprueba en DNS cuáles ya existen y si tienen web o correo.',
-    stack: 'JavaScript, DNS sobre HTTPS',
-    href: `${SITE_URL}gemelo/`,
-    status: 'consultas DNS reales',
-    cta: 'Probar la demo',
-  },
-  {
-    name: 'Kit de marca',
-    kind: 'Demo',
-    desc: 'Escribe el nombre de un negocio y elige un color: ves cómo quedarían sus computadoras (escritorio, pantalla de bloqueo, carpetas y terminal) y descargas el fondo y el icono listos para usar.',
-    stack: 'JavaScript, Canvas',
-    href: `${SITE_URL}kit-marca/`,
-    status: 'genera y descarga',
-    cta: 'Probar la demo',
-  },
   {
     name: 'Retro',
     kind: 'Defensa activa',

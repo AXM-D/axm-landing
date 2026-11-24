@@ -1,0 +1,23 @@
+/* AXM Lockcheck: hereda el sistema de AXM Scan (../scan/styles.css) y añade la zona de arrastre */
+.lede { font-size: 1.125rem; margin-top: 1.25rem; }
+.drop {
+  display: grid; place-items: center; gap: .4rem; text-align: center; cursor: pointer;
+  margin-top: 2rem; padding: clamp(2rem, 6vw, 3.5rem) 1.5rem;
+  border: 2px dashed var(--line); border-radius: 16px; background: var(--panel);
+  transition: border-color .15s, background-color .15s;
+}
+.drop:hover, .drop.is-over { border-color: var(--blue); background: var(--panel-2); }
+.drop:focus-within { outline: 2px solid var(--blue); outline-offset: 2px; }
+.drop-big { font-weight: 800; font-stretch: 110%; font-size: clamp(1.25rem, 3vw, 1.75rem); }
+.drop-small { font: .875rem var(--mono); color: var(--muted); }
+.alt { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.paste { display: grid; gap: .6rem; margin-top: .75rem; }
+.paste textarea {
+  width: 100%; font: .8125rem/1.5 var(--mono); color: var(--fg); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 12px; padding: .8rem 1rem; resize: vertical;
+}
+.paste textarea:focus { outline: none; border-color: var(--blue); }
+.paste .go { justify-self: start; padding: .75rem 1.4rem; }
+.f-links a { margin-right: .6rem; font-family: var(--mono); font-size: .8125rem; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { .drop { transition: none; } }

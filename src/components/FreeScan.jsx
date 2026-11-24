@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SCAN } from '../data'
+import { LOCKCHECK, SCAN } from '../data'
 import { ArrowRight } from './icons'
 
 /* Servicio gratuito: el formulario lleva directo al informe de AXM Scan */
@@ -50,6 +50,22 @@ export default function FreeScan() {
             </li>
           ))}
         </ul>
+
+        {/* Segunda herramienta gratuita, para equipos de desarrollo */}
+        <a
+          href={LOCKCHECK.href}
+          className="row-link mt-12 grid gap-x-10 gap-y-2 rounded-xl border border-line px-5 py-6 transition-colors duration-200 md:grid-cols-[1fr_auto] md:items-center md:px-7"
+        >
+          <div>
+            <p className="text-sm text-muted">{LOCKCHECK.badge}</p>
+            <h3 className="display-sm mt-1.5 text-[1.375rem] sm:text-[1.625rem]">{LOCKCHECK.title}</h3>
+            <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted">{LOCKCHECK.desc}</p>
+          </div>
+          <span className="flex items-center gap-1.5 text-sm font-medium text-fg">
+            {LOCKCHECK.cta}
+            <ArrowRight className="row-arrow size-4 text-muted" />
+          </span>
+        </a>
       </div>
     </section>
   )

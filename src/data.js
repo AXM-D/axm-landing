@@ -81,6 +81,14 @@ export const SCAN = {
   ],
 }
 
+export const LOCKCHECK = {
+  href: `${SITE_URL}lockcheck/`,
+  badge: 'También gratis, para equipos de desarrollo',
+  title: 'AXM Lockcheck: ¿tu proyecto instaló un paquete comprometido?',
+  desc: 'Arrastra tu package-lock.json, yarn.lock, pnpm-lock.yaml o requirements.txt y descubre al momento malware conocido, vulnerabilidades, versiones recién publicadas y nombres falsificados. El archivo no sale de tu navegador.',
+  cta: 'Revisar mis dependencias',
+}
+
 /* ---------- Servicios ---------- */
 export const SERVICES = [
   {
@@ -234,6 +242,15 @@ export const PROJECTS = [
     href: `${SITE_URL}scan/`,
     status: 'úsalo ya',
     cta: 'Revisar mi dominio',
+  },
+  {
+    name: 'AXM Lockcheck',
+    kind: 'Servicio gratis',
+    desc: 'Escáner de dependencias contra los gusanos de npm y PyPI de 2026: malware conocido, vulnerabilidades con la versión que las corrige, versiones recién publicadas, scripts de instalación y typosquatting. Informe en Markdown para pegar en un pull request. En español e inglés.',
+    stack: 'JavaScript, OSV.dev, registro de npm',
+    href: `${SITE_URL}lockcheck/`,
+    status: 'úsalo ya',
+    cta: 'Revisar mis dependencias',
   },
   {
     name: 'Calor MTY',
